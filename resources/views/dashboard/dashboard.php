@@ -57,10 +57,20 @@ require __DIR__ . '/../layouts/header.php';
 
                 <!-- CRUD Shortcut Panel -->
                 <div class="bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl mb-8 shadow-sm">
-                    <h3 class="text-sm font-bold text-slate-800 mb-5 uppercase tracking-wider flex items-center gap-2">
-                        <i data-lucide="layout-grid" class="w-5 h-5 text-teal-500"></i>
-                        <?php echo translate('Pintasan Manajemen Data', 'Data Management Shortcuts'); ?>
-                    </h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-5 gap-4">
+                        <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                            <i data-lucide="layout-grid" class="w-5 h-5 text-teal-500"></i>
+                            <?php echo translate('Pintasan Manajemen Data', 'Data Management Shortcuts'); ?>
+                        </h3>
+                        <?php if ($role === 'admin'): ?>
+                        <form action="/dashboard/sync" method="POST" class="inline-block" onsubmit="return confirm('Mulai sinkronisasi Smart Sync? Proses ini akan melakukan copy (UPSERT) dari SQLite ke MySQL.');">
+                            <?php echo \App\Core\Csrf::field(); ?>
+                            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 text-white font-bold text-xs rounded-xl shadow-md hover:bg-teal-600 active:scale-[0.98] transition-all">
+                                <i data-lucide="refresh-cw" class="w-4 h-4"></i> Sync Database (SQLite -> MySQL)
+                            </button>
+                        </form>
+                        <?php endif; ?>
+                    </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <a href="/admin/tours" class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-teal-300 hover:bg-teal-50 hover:shadow-sm transition-all group">
                             <div class="p-2 bg-white rounded-lg shadow-xs text-slate-600 group-hover:text-teal-600">💼</div>

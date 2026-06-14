@@ -176,4 +176,106 @@ class DashboardController {
         flash('success', 'Terima kasih atas ulasan Anda! Ulasan Anda sedang diverifikasi oleh admin.');
         redirect('/dashboard');
     }
+
+    // Aksi Admin: Sync Database (Smart Sync UPSERT & DELETE)
+    public function syncDatabase() {
+        RoleCheck::requireRole(['admin']);
+        Csrf::validate();
+
+        $configPath = __DIR__ . '/../../config/database.php';
+        if (!file_exists($configPath)) {
+            flash('error', 'File konfigurasi database tidak ditemukan.');
+            redirect('/dashboard');
+        }
+        $config = require $configPath;
+
+        $sqliteFile = $config['sqlite']['database'];
+        if (!file_exists($sqliteFile)) {
+            flash('error', "File database SQLite tidak ditemukan di path: " . $sqliteFile);
+            redirect('/dashboard');
+        }
+
+        try {
+            $sqlitePdo = new \PDO("sqlite:" . $sqliteFile);
+            $sqlitePdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $sqlitePdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+
+            $dbConf = $config['mysql'];
+            $dsn = "mysql:host={$dbConf['host']};port=" . ($dbConf['port'] ?? 3306) . ";dbname={$dbConf['database']};charset=" . ($dbConf['charset'] ?? 'utf8mb4');
+            $mysqlPdo = new \PDO($dsn, $dbConf['username'], $dbConf['password'], [
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                \PDO::ATTR_EMULATE_PREPARES => false,
+            ]);
+
+            // Matikan foreign key check sementara agar proses UPSERT/DELETE tidak terblokir constraint
+            $mysqlPdo->exec("SET FOREIGN_KEY_CHECKS=0;");
+
+            $tables = [
+                'users', 'tour_categories', 'destinations', 'tour_guides', 
+                'tour_packages', 'itineraries', 'bookings', 'reviews', 'audit_logs'
+            ];
+
+            $totalSynced = 0;
+            $totalDeleted = 0;
+
+            foreach ($tables as $table) {
+                // 1. Ambil data dari SQLite
+                $stmt = $sqlitePdo->query("SELECT * FROM $table");
+                $sqliteRows = $stmt->fetchAll();
+                
+                $sqliteIds = [];
+                foreach ($sqliteRows as $row) {
+                    if (isset($row['id'])) {
+                        $sqliteIds[] = $row['id'];
+                    }
+                }
+                
+                // 2. Hapus data di MySQL yang tidak ada di SQLite TERLEBIH DAHULU
+                // Ini mencegah bentrok Unique Key (seperti slug) dari data lama yang sebenarnya sudah dihapus di SQLite
+                $sqliteIds = array_filter($sqliteIds); // Hapus null
+                if (!empty($sqliteIds)) {
+                    $idsStr = implode(",", array_map('intval', $sqliteIds));
+                    $deleted = $mysqlPdo->exec("DELETE FROM $table WHERE id NOT IN ($idsStr)");
+                } else {
+                    $deleted = $mysqlPdo->exec("DELETE FROM $table");
+                }
+                $totalDeleted += $deleted;
+                
+                // 3. UPSERT (Insert atau Update) data yang ada di SQLite ke MySQL
+                if (!empty($sqliteRows)) {
+                    $columns = array_keys($sqliteRows[0]);
+                    $colNames = implode(", ", $columns);
+                    $placeholders = implode(", ", array_fill(0, count($columns), "?"));
+                    
+                    // Siapkan query UPSERT (REPLACE INTO)
+                    // REPLACE INTO secara otomatis menghapus baris lama yang berkonflik (baik Primary Key maupun Unique Key seperti slug) lalu meng-insert baris baru.
+                    // Ini jauh lebih tangguh terhadap "slug swapping" antar baris.
+                    $sql = "REPLACE INTO $table ($colNames) VALUES ($placeholders)";
+                    $insertStmt = $mysqlPdo->prepare($sql);
+                    
+                    // Eksekusi tiap baris
+                    foreach ($sqliteRows as $row) {
+                        $insertStmt->execute(array_values($row));
+                        $totalSynced++;
+                    }
+                }
+            }
+
+            // Hidupkan kembali foreign key check
+            $mysqlPdo->exec("SET FOREIGN_KEY_CHECKS=1;");
+            
+            AuditLogger::logAction('database_sync', "Sinkronisasi Smart Sync berhasil. Tersinkronisasi: $totalSynced, Dihapus: $totalDeleted.");
+            flash('success', "Sinkronisasi Database Berhasil! $totalSynced data ter-sync (Insert/Update), $totalDeleted data lama dihapus.");
+            
+        } catch (\Exception $e) {
+            if (isset($mysqlPdo)) {
+                // Pastikan hidup kembali
+                try { $mysqlPdo->exec("SET FOREIGN_KEY_CHECKS=1;"); } catch (\Exception $ex) {}
+            }
+            flash('error', "Gagal menyinkronkan database: " . $e->getMessage());
+        }
+
+        redirect('/dashboard');
+    }
 }

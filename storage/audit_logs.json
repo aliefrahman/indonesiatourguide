@@ -339,5 +339,27 @@
         "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
         "description": "Pengguna admin@test.com keluar dari sistem.",
         "created_at": "2026-06-14 09:15:49"
+    },
+    {
+        "id": 32,
+        "user_id": 1,
+        "user_name": "Admin Tour",
+        "user_email": "admin@test.com",
+        "action_type": "login_success",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "description": "Pengguna admin@test.com berhasil masuk.",
+        "created_at": "2026-06-14 10:11:16"
+    },
+    {
+        "id": 33,
+        "user_id": 1,
+        "user_name": "Admin Tour",
+        "user_email": "admin@test.com",
+        "action_type": "database_sync",
+        "ip_address": "127.0.0.1",
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+        "description": "Sinkronisasi Smart Sync berhasil. Tersinkronisasi: 34, Dihapus: 13.",
+        "created_at": "2026-06-14 10:16:06"
     }
 ]

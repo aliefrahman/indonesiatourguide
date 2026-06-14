@@ -45,6 +45,7 @@ $router->post('/dashboard/guide/availability', [DashboardController::class, 'upd
 $router->post('/dashboard/booking/assign', [DashboardController::class, 'assignGuide']);
 $router->post('/dashboard/reviews/moderate', [DashboardController::class, 'moderateReview']);
 $router->post('/dashboard/reviews/create', [DashboardController::class, 'createReview']);
+$router->post('/dashboard/sync', [DashboardController::class, 'syncDatabase']);
 
 // 4. USER PROFILE ROUTE
 $router->get('/profile/edit', [UserController::class, 'editProfile']);
