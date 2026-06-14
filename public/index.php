@@ -1,8 +1,9 @@
 <?php
 // File: public/index.php
 
-// Load bootstrapping class (memuat helpers, termasuk env())
+// Load bootstrapping class & helpers
 require_once __DIR__ . '/../app/Core/App.php';
+require_once __DIR__ . '/../app/Core/helpers.php';
 
 // Tampilkan error hanya saat development (ubah APP_ENV ke production saat produksi)
 $isDev = env('APP_ENV', 'development') !== 'production';
