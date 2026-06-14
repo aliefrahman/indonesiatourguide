@@ -1,6 +1,13 @@
 .env
+security_review.md
+Gemini.md
+npm-debug.log
+Security.md
 node_modules/
 scratch/*
 storage/tour_guide_db.sqlite
 storage/sessions/*
 !storage/sessions/.gitkeep
+.gitignore
+.agents/*
+

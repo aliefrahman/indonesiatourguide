@@ -49,6 +49,10 @@ if (!function_exists('view')) {
 // Helper pengalihan halaman
 if (!function_exists('redirect')) {
     function redirect($url) {
+        // Mencegah Open Redirect (pastikan hanya redirect ke path internal)
+        if (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0 || strpos($url, '//') === 0) {
+            $url = '/';
+        }
         header("Location: " . $url);
         exit;
     }
