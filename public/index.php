@@ -1,13 +1,14 @@
 <?php
 // File: public/index.php
 
-// Tampilkan error saat development (ubah ke 0 saat produksi)
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-// Load bootstrapping class
+// Load bootstrapping class (memuat helpers, termasuk env())
 require_once __DIR__ . '/../app/Core/App.php';
+
+// Tampilkan error hanya saat development (ubah APP_ENV ke production saat produksi)
+$isDev = env('APP_ENV', 'development') !== 'production';
+ini_set('display_errors', $isDev ? 1 : 0);
+ini_set('display_startup_errors', $isDev ? 1 : 0);
+error_reporting($isDev ? E_ALL : 0);
 
 use App\Core\App;
 use App\Controllers\HomeController;

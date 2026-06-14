@@ -22,12 +22,12 @@ require __DIR__ . '/../layouts/header.php';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                     <label for="slug" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Slug Kategori (Unique)</label>
-                    <input id="slug" name="slug" type="text" required placeholder="beach" value="<?php echo old('slug'); ?>"
+                    <input id="slug" name="slug" type="text" required placeholder="beach" value="<?php echo e(old('slug')); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                 </div>
                 <div>
                     <label for="icon" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Icon Emoji (e.g. 🧗, 🏖️)</label>
-                    <input id="icon" name="icon" type="text" placeholder="🏖️" value="<?php echo old('icon'); ?>"
+                    <input id="icon" name="icon" type="text" placeholder="🏖️" value="<?php echo e(old('icon')); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                 </div>
             </div>
@@ -35,12 +35,12 @@ require __DIR__ . '/../layouts/header.php';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                     <label for="name_id" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nama Kategori (Bahasa)</label>
-                    <input id="name_id" name="name_id" type="text" required placeholder="Pantai & Selam" value="<?php echo old('name_id'); ?>"
+                    <input id="name_id" name="name_id" type="text" required placeholder="Pantai & Selam" value="<?php echo e(old('name_id')); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                 </div>
                 <div>
                     <label for="name_en" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nama Kategori (English)</label>
-                    <input id="name_en" name="name_en" type="text" required placeholder="Beach & Diving" value="<?php echo old('name_en'); ?>"
+                    <input id="name_en" name="name_en" type="text" required placeholder="Beach & Diving" value="<?php echo e(old('name_en')); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                 </div>
             </div>
@@ -49,12 +49,12 @@ require __DIR__ . '/../layouts/header.php';
                 <div>
                     <label for="description_id" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Deskripsi (Bahasa)</label>
                     <textarea id="description_id" name="description_id" rows="4" placeholder="Deskripsi kategori..."
-                        class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo old('description_id'); ?></textarea>
+                        class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo e(old('description_id')); ?></textarea>
                 </div>
                 <div>
                     <label for="description_en" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Deskripsi (English)</label>
                     <textarea id="description_en" name="description_en" rows="4" placeholder="Category description..."
-                        class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo old('description_en'); ?></textarea>
+                        class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo e(old('description_en')); ?></textarea>
                 </div>
             </div>
 

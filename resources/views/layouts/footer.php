@@ -22,10 +22,10 @@
                     </span>
                 </a>
                 <p class="text-sm leading-relaxed text-slate-500 max-w-xs">
-                    <?php echo translate(
+                    <?php echo e(translate(
                         'Platform digital terintegrasi menghubungkan wisatawan dengan pemandu lokal terbaik untuk petualangan tak terlupakan di seluruh Indonesia.',
                         'Integrated digital platform connecting travelers with the best local guides for unforgettable adventures across Indonesia.'
-                    ); ?>
+                    )); ?>
                 </p>
                 <!-- Social Icons -->
                 <div class="flex gap-3 pt-1">
@@ -47,39 +47,39 @@
             <!-- Col 2: Quick Links -->
             <div>
                 <h4 class="text-slate-100 font-bold text-sm uppercase tracking-wider mb-5">
-                    <?php echo translate('Tautan Cepat', 'Quick Links'); ?>
+                    <?php echo e(translate('Tautan Cepat', 'Quick Links')); ?>
                 </h4>
                 <ul class="space-y-3 text-sm">
-                    <li><a href="/" class="footer-link"><?php echo translate('Beranda', 'Home'); ?></a></li>
+                    <li><a href="/" class="footer-link"><?php echo e(translate('Beranda', 'Home')); ?></a></li>
                     <li><a href="/tours"
-                            class="footer-link"><?php echo translate('Paket Wisata', 'Tour Packages'); ?></a></li>
+                            class="footer-link"><?php echo e(translate('Paket Wisata', 'Tour Packages')); ?></a></li>
                     <li><a href="/destinations"
-                            class="footer-link"><?php echo translate('Destinasi', 'Destinations'); ?></a></li>
+                            class="footer-link"><?php echo e(translate('Destinasi', 'Destinations')); ?></a></li>
                     <li><a href="/register"
-                            class="footer-link"><?php echo translate('Daftar Sebagai Agen', 'Register as Agent'); ?></a>
+                            class="footer-link"><?php echo e(translate('Daftar Sebagai Agen', 'Register as Agent')); ?></a>
                     </li>
                     <li><a href="/login"
-                            class="footer-link"><?php echo translate('Portal Kemitraan', 'Partner Portal'); ?></a></li>
+                            class="footer-link"><?php echo e(translate('Portal Kemitraan', 'Partner Portal')); ?></a></li>
                 </ul>
             </div>
 
             <!-- Col 3: Categories -->
             <div>
                 <h4 class="text-slate-100 font-bold text-sm uppercase tracking-wider mb-5">
-                    <?php echo translate('Kategori', 'Categories'); ?>
+                    <?php echo e(translate('Kategori', 'Categories')); ?>
                 </h4>
                 <ul class="space-y-3 text-sm">
                     <li><a href="/?category=alam"
-                            class="footer-link"><?php echo translate('Wisata Alam', 'Nature Tours'); ?></a></li>
+                            class="footer-link"><?php echo e(translate('Wisata Alam', 'Nature Tours')); ?></a></li>
                     <li><a href="/?category=budaya"
-                            class="footer-link"><?php echo translate('Budaya & Heritage', 'Culture & Heritage'); ?></a>
+                            class="footer-link"><?php echo e(translate('Budaya & Heritage', 'Culture & Heritage')); ?></a>
                     </li>
                     <li><a href="/?category=pantai"
-                            class="footer-link"><?php echo translate('Pantai & Bahari', 'Beach & Marine'); ?></a></li>
+                            class="footer-link"><?php echo e(translate('Pantai & Bahari', 'Beach & Marine')); ?></a></li>
                     <li><a href="/?category=kuliner"
-                            class="footer-link"><?php echo translate('Wisata Kuliner', 'Culinary Tours'); ?></a></li>
+                            class="footer-link"><?php echo e(translate('Wisata Kuliner', 'Culinary Tours')); ?></a></li>
                     <li><a href="/?category=petualangan"
-                            class="footer-link"><?php echo translate('Petualangan', 'Adventure'); ?></a></li>
+                            class="footer-link"><?php echo e(translate('Petualangan', 'Adventure')); ?></a></li>
                 </ul>
             </div>
 
@@ -106,12 +106,12 @@
 
         <!-- Bottom Bar -->
         <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-            <p>&copy; <?php echo date('Y'); ?> Indonesia Tour Guide. All rights reserved.</p>
+            <p>&copy; <?php echo e(date('Y')); ?> Indonesia Tour Guide. All rights reserved.</p>
             <div class="flex gap-4">
                 <a href="#"
-                    class="hover:text-slate-300 transition-colors"><?php echo translate('Kebijakan Privasi', 'Privacy Policy'); ?></a>
+                    class="hover:text-slate-300 transition-colors"><?php echo e(translate('Kebijakan Privasi', 'Privacy Policy')); ?></a>
                 <a href="#"
-                    class="hover:text-slate-300 transition-colors"><?php echo translate('Syarat & Ketentuan', 'Terms of Service'); ?></a>
+                    class="hover:text-slate-300 transition-colors"><?php echo e(translate('Syarat & Ketentuan', 'Terms of Service')); ?></a>
             </div>
         </div>
     </div>

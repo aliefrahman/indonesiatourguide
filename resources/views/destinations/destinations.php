@@ -6,12 +6,12 @@ require __DIR__ . '/../layouts/header.php';
 
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
     <div class="mb-10 text-center">
-        <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"><?php echo translate('Destinasi Wisata Pilihan', 'Amazing Destinations'); ?></h1>
+        <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"><?php echo e(translate('Destinasi Wisata Pilihan', 'Amazing Destinations')); ?></h1>
         <p class="mt-3 text-slate-500 text-sm max-w-xl mx-auto">
-            <?php echo translate(
+            <?php echo e(translate(
                 'Eksplorasi keindahan alam, peninggalan sejarah, kebudayaan lokal, dan surga bawah laut di seluruh penjuru kepulauan Indonesia.',
                 'Explore natural wonders, ancient heritage, rich local cultures, and underwater paradise across the Indonesian archipelago.'
-            ); ?>
+            )); ?>
         </p>
     </div>
 
@@ -52,9 +52,9 @@ require __DIR__ . '/../layouts/header.php';
                 </div>
 
                 <div class="p-5 pt-0">
-                    <a href="/destinations/detail/<?php echo $dest['slug']; ?>" 
+                    <a href="/destinations/detail/<?php echo e($dest['slug']); ?>" 
                         class="block w-full text-center rounded-xl bg-teal-50 border border-teal-100 py-2.5 text-xs font-bold text-teal-700 hover:text-white hover:bg-teal-500 hover:border-teal-500 active:scale-[0.98] transition-all">
-                        <?php echo translate('Eksplorasi Detail', 'Explore Details'); ?>
+                        <?php echo e(translate('Eksplorasi Detail', 'Explore Details')); ?>
                     </a>
                 </div>
             </div>

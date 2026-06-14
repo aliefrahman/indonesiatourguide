@@ -21,19 +21,19 @@ require __DIR__ . '/../layouts/header.php';
 
             <div>
                 <label for="name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nama Lengkap</label>
-                <input id="name" name="name" type="text" required placeholder="Ahmad Subarjo" value="<?php echo old('name'); ?>"
+                <input id="name" name="name" type="text" required placeholder="Ahmad Subarjo" value="<?php echo e(old('name')); ?>"
                     class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                     <label for="email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Email Address</label>
-                    <input id="email" name="email" type="email" required placeholder="ahmad@test.com" value="<?php echo old('email'); ?>"
+                    <input id="email" name="email" type="email" required placeholder="ahmad@test.com" value="<?php echo e(old('email')); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                 </div>
                 <div>
                     <label for="phone" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nomor Telepon (HP)</label>
-                    <input id="phone" name="phone" type="text" placeholder="0812XXXXXXXX" value="<?php echo old('phone'); ?>"
+                    <input id="phone" name="phone" type="text" placeholder="0812XXXXXXXX" value="<?php echo e(old('phone')); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                 </div>
             </div>

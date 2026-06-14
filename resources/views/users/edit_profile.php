@@ -25,7 +25,7 @@ require __DIR__ . '/../layouts/header.php';
                         <?php if (!empty($user['avatar'])): ?>
                                 <img src="/storage/uploads/<?php echo htmlspecialchars($user['avatar']); ?>" alt="Avatar" class="h-full w-full object-cover">
                         <?php else: ?>
-                                <span class="text-3xl font-bold text-teal-600"><?php echo strtoupper(substr($user['name'], 0, 1)); ?></span>
+                                <span class="text-3xl font-bold text-teal-600"><?php echo e(strtoupper(substr($user['name'], 0, 1))); ?></span>
                         <?php endif; ?>
                     </div>
                     
@@ -85,12 +85,12 @@ require __DIR__ . '/../layouts/header.php';
                                     $langs = $guideDetail['languages_spoken'];
                                     ?>
                                     <label class="inline-flex items-center text-sm font-medium text-slate-700 cursor-pointer hover:text-teal-600 transition-colors">
-                                        <input type="checkbox" name="languages[]" value="id" <?php echo in_array('id', $langs) ? 'checked' : ''; ?>
+                                        <input type="checkbox" name="languages[]" value="id" <?php echo e(in_array('id', $langs) ? 'checked' : ''); ?>
                                             class="h-4 w-4 rounded border-slate-300 bg-white text-teal-500 focus:ring-teal-500 mr-2 cursor-pointer transition-all">
                                         Bahasa Indonesia
                                     </label>
                                     <label class="inline-flex items-center text-sm font-medium text-slate-700 cursor-pointer hover:text-teal-600 transition-colors">
-                                        <input type="checkbox" name="languages[]" value="en" <?php echo in_array('en', $langs) ? 'checked' : ''; ?>
+                                        <input type="checkbox" name="languages[]" value="en" <?php echo e(in_array('en', $langs) ? 'checked' : ''); ?>
                                             class="h-4 w-4 rounded border-slate-300 bg-white text-teal-500 focus:ring-teal-500 mr-2 cursor-pointer transition-all">
                                         English
                                     </label>

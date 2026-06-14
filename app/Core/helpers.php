@@ -19,6 +19,13 @@ if (!function_exists('str_ends_with')) {
 if (!function_exists('str_contains')) {
     function str_contains($haystack, $needle) {
         return (string)$needle === '' || strpos($haystack, $needle) !== false;
+}
+}
+
+// Helper pencegahan XSS (Context-Aware Output Escaping)
+if (!function_exists('e')) {
+    function e($string) {
+        return htmlspecialchars($string ?? '', ENT_QUOTES, 'UTF-8');
     }
 }
 

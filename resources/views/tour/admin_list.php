@@ -7,12 +7,12 @@ require __DIR__ . '/../layouts/header.php';
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight"><?php echo translate('Kelola Paket Wisata', 'Manage Tour Packages'); ?></h1>
-            <p class="text-sm text-slate-500 mt-1.5"><?php echo translate('Manajemen paket wisata harian lengkap dengan harga dinamis, durasi, dan itinerary harian.', 'Manage packages, pricing, duration, and visual itineraries.'); ?></p>
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight"><?php echo e(translate('Kelola Paket Wisata', 'Manage Tour Packages')); ?></h1>
+            <p class="text-sm text-slate-500 mt-1.5"><?php echo e(translate('Manajemen paket wisata harian lengkap dengan harga dinamis, durasi, dan itinerary harian.', 'Manage packages, pricing, duration, and visual itineraries.')); ?></p>
         </div>
         <a href="/admin/tours/create" 
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-500 text-white font-bold text-sm rounded-xl shadow-md hover:bg-teal-600 active:scale-[0.98] transition-all">
-            <i data-lucide="plus" class="w-4 h-4"></i> <?php echo translate('Tambah Paket', 'Add Tour Package'); ?>
+            <i data-lucide="plus" class="w-4 h-4"></i> <?php echo e(translate('Tambah Paket', 'Add Tour Package')); ?>
         </a>
     </div>
 
@@ -55,14 +55,14 @@ require __DIR__ . '/../layouts/header.php';
                                     </span>
                                 </td>
                                 <td class="py-3 px-4 text-slate-600"><?php echo htmlspecialchars($pkg['location_name']); ?></td>
-                                <td class="py-3 px-4 text-slate-600"><?php echo $pkg['duration_days']; ?> Hari</td>
-                                <td class="py-3 px-4 text-teal-600 font-black"><?php echo format_rupiah($pkg['price']); ?></td>
+                                <td class="py-3 px-4 text-slate-600"><?php echo e($pkg['duration_days']); ?> Hari</td>
+                                <td class="py-3 px-4 text-teal-600 font-black"><?php echo e(format_rupiah($pkg['price'])); ?></td>
                                 <td class="py-3 px-4 text-right">
                                     <div class="flex justify-end gap-2">
-                                        <a href="/tours/detail/<?php echo $pkg['id']; ?>" target="_blank" class="p-2 rounded-lg bg-white border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-300 hover:bg-teal-50 transition-all shadow-xs" title="Lihat Detail"><i data-lucide="eye" class="w-4 h-4"></i></a>
-                                        <a href="/admin/tours/edit/<?php echo $pkg['id']; ?>" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-teal-300 hover:bg-teal-50 text-xs font-bold text-teal-700 transition-all shadow-xs">Edit</a>
+                                        <a href="/tours/detail/<?php echo e($pkg['id']); ?>" target="_blank" class="p-2 rounded-lg bg-white border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-300 hover:bg-teal-50 transition-all shadow-xs" title="Lihat Detail"><i data-lucide="eye" class="w-4 h-4"></i></a>
+                                        <a href="/admin/tours/edit/<?php echo e($pkg['id']); ?>" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-teal-300 hover:bg-teal-50 text-xs font-bold text-teal-700 transition-all shadow-xs">Edit</a>
                                         
-                                        <form action="/admin/tours/delete/<?php echo $pkg['id']; ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus paket wisata ini?')" class="inline">
+                                        <form action="/admin/tours/delete/<?php echo e($pkg['id']); ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus paket wisata ini?')" class="inline">
                                             <?php echo \App\Core\Csrf::field(); ?>
                                             <button type="submit" class="px-3 py-1.5 rounded-lg bg-white border border-rose-200 text-rose-600 hover:bg-rose-50 text-xs font-bold transition-all shadow-xs">Hapus</button>
                                         </form>

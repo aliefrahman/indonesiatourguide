@@ -23,22 +23,22 @@ require __DIR__ . '/../layouts/header.php';
         <div
             class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-white/90 mb-6">
             <span class="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
-            <?php echo translate('JELAJAHI KEPULAUAN', 'EXPLORE THE ARCHIPELAGO'); ?>
+            <?php echo e(translate('JELAJAHI KEPULAUAN', 'EXPLORE THE ARCHIPELAGO')); ?>
         </div>
 
         <!-- Headline -->
         <h1
             class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.12] tracking-tight max-w-3xl mx-auto">
-            <?php echo translate('Temukan Keajaiban', 'Discover the Magic of'); ?>
+            <?php echo e(translate('Temukan Keajaiban', 'Discover the Magic of')); ?>
             <span class="block text-gradient">Indonesia</span>
         </h1>
 
         <!-- Subtitle -->
         <p class="mt-5 text-base sm:text-lg text-slate-300/90 max-w-2xl mx-auto leading-relaxed">
-            <?php echo translate(
+            <?php echo e(translate(
                 'Temukan paket wisata impian dan pilih sendiri pemandu tersertifikasi yang siap berbagi keindahan autentik Indonesia.',
                 'Find the best local tour guides and customized packages to experience the rich culture, history, and natural beauty of Indonesia.'
-            ); ?>
+            )); ?>
         </p>
 
         <!-- Search Card -->
@@ -48,11 +48,11 @@ require __DIR__ . '/../layouts/header.php';
                 <div class="inline-flex gap-1 bg-white/10 backdrop-blur-sm rounded-full p-1 border border-white/15">
                     <button type="button"
                         class="px-5 py-2 rounded-full bg-white text-teal-700 text-xs font-bold shadow-sm transition-all">
-                        <?php echo translate('Semua Paket', 'All Tours'); ?>
+                        <?php echo e(translate('Semua Paket', 'All Tours')); ?>
                     </button>
                     <button type="button"
                         class="px-5 py-2 rounded-full text-white/80 text-xs font-semibold hover:text-white transition-colors">
-                        <?php echo translate('Berdasarkan Wilayah', 'By Region'); ?>
+                        <?php echo e(translate('Berdasarkan Wilayah', 'By Region')); ?>
                     </button>
                 </div>
             </div>
@@ -67,10 +67,10 @@ require __DIR__ . '/../layouts/header.php';
                     <div class="flex-1 min-w-0 text-left">
                         <label
                             class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider leading-none mb-1">
-                            <?php echo translate('Mau ke mana?', 'Where to go?'); ?>
+                            <?php echo e(translate('Mau ke mana?', 'Where to go?')); ?>
                         </label>
                         <input type="text" name="search"
-                            placeholder="<?php echo translate('Cari paket, kota, destinasi...', 'Search tours, destinations...'); ?>"
+                            placeholder="<?php echo e(translate('Cari paket, kota, destinasi...', 'Search tours, destinations...')); ?>"
                             value="<?php echo htmlspecialchars($searchKeyword ?? ''); ?>"
                             class="w-full bg-transparent border-none outline-none text-slate-700 font-semibold text-sm placeholder-slate-400">
                     </div>
@@ -85,7 +85,7 @@ require __DIR__ . '/../layouts/header.php';
                     <div class="flex-1 min-w-0 text-left">
                         <label
                             class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider leading-none mb-1">
-                            <?php echo translate('Tanggal Perjalanan', 'Travel Date'); ?>
+                            <?php echo e(translate('Tanggal Perjalanan', 'Travel Date')); ?>
                         </label>
                         <input type="date" name="travel_date"
                             class="w-full bg-transparent border-none outline-none text-slate-700 font-semibold text-sm"
@@ -109,7 +109,7 @@ require __DIR__ . '/../layouts/header.php';
                     <button type="submit"
                         class="btn-teal h-12 px-8 rounded-full font-bold text-sm whitespace-nowrap flex-1 md:flex-initial">
                         <i data-lucide="search" class="h-4 w-4 mr-2"></i>
-                        <?php echo translate('Cari', 'Search'); ?>
+                        <?php echo e(translate('Cari', 'Search')); ?>
                     </button>
                 </div>
             </form>
@@ -117,7 +117,7 @@ require __DIR__ . '/../layouts/header.php';
             <?php if (!empty($userLat) && !empty($userLng)): ?>
                 <div class="mt-4 flex items-center justify-center gap-2 text-xs text-cyan-300">
                     <i data-lucide="circle-check" class="h-3.5 w-3.5"></i>
-                    <span><?php echo translate('Geolokasi aktif — menampilkan destinasi terdekat Anda.', 'Geolocation active — showing nearest destinations.'); ?></span>
+                    <span><?php echo e(translate('Geolokasi aktif — menampilkan destinasi terdekat Anda.', 'Geolocation active — showing nearest destinations.')); ?></span>
                     <a href="/" class="underline text-rose-300 font-semibold hover:text-rose-200">Reset</a>
                 </div>
             <?php endif; ?>
@@ -139,7 +139,7 @@ require __DIR__ . '/../layouts/header.php';
                 </div>
                 <span class="text-2xl font-black text-slate-900">8+</span>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">
-                    <?php echo translate('Destinasi Wisata', 'Tour Destinations'); ?>
+                    <?php echo e(translate('Destinasi Wisata', 'Tour Destinations')); ?>
                 </span>
             </div>
 
@@ -150,7 +150,7 @@ require __DIR__ . '/../layouts/header.php';
                 </div>
                 <span class="text-2xl font-black text-slate-900">6</span>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">
-                    <?php echo translate('Tahun Pengalaman', 'Years Experience'); ?>
+                    <?php echo e(translate('Tahun Pengalaman', 'Years Experience')); ?>
                 </span>
             </div>
 
@@ -161,7 +161,7 @@ require __DIR__ . '/../layouts/header.php';
                 </div>
                 <span class="text-2xl font-black text-slate-900">11</span>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">
-                    <?php echo translate('Mitra Bahagia', 'Happy Partners'); ?>
+                    <?php echo e(translate('Mitra Bahagia', 'Happy Partners')); ?>
                 </span>
             </div>
 
@@ -173,7 +173,7 @@ require __DIR__ . '/../layouts/header.php';
                 <span class="text-2xl font-black text-slate-900">4.9<span
                         class="text-base font-semibold text-slate-400"> / 5.0</span></span>
                 <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">
-                    <?php echo translate('Rata-rata Rating', 'Average Rating'); ?>
+                    <?php echo e(translate('Rata-rata Rating', 'Average Rating')); ?>
                 </span>
             </div>
         </div>
@@ -188,9 +188,9 @@ require __DIR__ . '/../layouts/header.php';
     <!-- ─── Browse by Category ──────────────────────────────────────── -->
     <section class="mb-16">
         <div class="text-center mb-10">
-            <h2 class="section-title"><?php echo translate('Cari Berdasarkan Kategori', 'Browse by Category'); ?></h2>
+            <h2 class="section-title"><?php echo e(translate('Cari Berdasarkan Kategori', 'Browse by Category')); ?></h2>
             <p class="section-subtitle mt-2">
-                <?php echo translate('Temukan paket yang sesuai dengan gaya liburan Anda.', 'Find packages that match your travel style.'); ?>
+                <?php echo e(translate('Temukan paket yang sesuai dengan gaya liburan Anda.', 'Find packages that match your travel style.')); ?>
             </p>
         </div>
 
@@ -198,8 +198,8 @@ require __DIR__ . '/../layouts/header.php';
             <?php foreach ($categories as $cat):
                 $isSel = ($selectedCategory === $cat['slug']);
                 ?>
-                <a href="/?category=<?php echo $cat['slug']; ?><?php echo !empty($searchKeyword) ? '&search=' . urlencode($searchKeyword) : ''; ?>"
-                    class="cat-card group <?php echo $isSel ? 'active' : ''; ?>"
+                <a href="/?category=<?php echo e($cat['slug']); ?><?php echo e(!empty($searchKeyword) ? '&search=' . urlencode($searchKeyword) : ''); ?>"
+                    class="cat-card group <?php echo e($isSel ? 'active' : ''); ?>"
                     title="<?php echo htmlspecialchars(translate($cat['name_id'], $cat['name_en'])); ?>">
                     <div class="text-3xl mb-3 transform group-hover:scale-110 transition-transform duration-200">
                         <?php echo htmlspecialchars($cat['icon']); ?>
@@ -207,8 +207,8 @@ require __DIR__ . '/../layouts/header.php';
                     <h3 class="text-xs font-bold text-slate-800 leading-tight line-clamp-2">
                         <?php echo htmlspecialchars(translate($cat['name_id'], $cat['name_en'])); ?>
                     </h3>
-                    <p class="text-[10px] text-slate-400 mt-1"><?php echo $cat['package_count']; ?>
-                        <?php echo translate('Paket', 'Packages'); ?>
+                    <p class="text-[10px] text-slate-400 mt-1"><?php echo e($cat['package_count']); ?>
+                        <?php echo e(translate('Paket', 'Packages')); ?>
                     </p>
                 </a>
             <?php endforeach; ?>
@@ -219,14 +219,14 @@ require __DIR__ . '/../layouts/header.php';
     <section class="mb-16">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
             <div>
-                <h2 class="section-title"><?php echo translate('Paket Wisata Pilihan', 'Featured Tours'); ?></h2>
+                <h2 class="section-title"><?php echo e(translate('Paket Wisata Pilihan', 'Featured Tours')); ?></h2>
                 <p class="section-subtitle">
-                    <?php echo translate('Pilihan pengalaman terbaik di seluruh Indonesia.', 'Handpicked experiences across Indonesia.'); ?>
+                    <?php echo e(translate('Pilihan pengalaman terbaik di seluruh Indonesia.', 'Handpicked experiences across Indonesia.')); ?>
                 </p>
             </div>
             <a href="/tours"
                 class="flex items-center gap-1 text-sm font-bold text-teal-600 hover:text-teal-500 whitespace-nowrap transition-colors">
-                <?php echo translate('Lihat Semua', 'View All'); ?>
+                <?php echo e(translate('Lihat Semua', 'View All')); ?>
                 <i data-lucide="arrow-right" class="h-4 w-4"></i>
             </a>
         </div>
@@ -235,7 +235,7 @@ require __DIR__ . '/../layouts/header.php';
             <div class="text-center py-14 bg-white rounded-2xl border border-slate-100 shadow-sm">
                 <i data-lucide="route" class="h-10 w-10 text-slate-300 mx-auto mb-3"></i>
                 <p class="text-slate-400 text-sm">
-                    <?php echo translate('Tidak ada paket wisata yang cocok.', 'No packages match your search.'); ?>
+                    <?php echo e(translate('Tidak ada paket wisata yang cocok.', 'No packages match your search.')); ?>
                 </p>
                 <a href="/" class="mt-4 inline-block text-xs font-semibold text-teal-600 hover:underline">Reset
                     pencarian</a>
@@ -269,7 +269,7 @@ require __DIR__ . '/../layouts/header.php';
                                 <span
                                     class="inline-flex items-center gap-1 bg-amber-400 text-slate-900 text-[10px] font-black rounded-full px-2 py-0.5 shadow">
                                     <i data-lucide="star" class="h-2.5 w-2.5 fill-slate-900"></i>
-                                    <?php echo $rating; ?>
+                                    <?php echo e($rating); ?>
                                 </span>
                             </div>
 
@@ -278,7 +278,7 @@ require __DIR__ . '/../layouts/header.php';
                                 <span
                                     class="inline-flex items-center gap-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-semibold rounded-full px-2.5 py-1 border border-white/10">
                                     <i data-lucide="clock" class="h-2.5 w-2.5 text-cyan-400"></i>
-                                    <?php echo $pkg['duration_days']; ?>         <?php echo translate('Hari', 'Days'); ?>
+                                    <?php echo e($pkg['duration_days']); ?>         <?php echo e(translate('Hari', 'Days')); ?>
                                 </span>
                             </div>
                         </div>
@@ -293,7 +293,7 @@ require __DIR__ . '/../layouts/header.php';
 
                             <h3
                                 class="font-bold text-sm text-slate-900 group-hover:text-teal-600 transition-colors line-clamp-2 leading-snug">
-                                <a href="/tours/detail/<?php echo $pkg['id']; ?>">
+                                <a href="/tours/detail/<?php echo e($pkg['id']); ?>">
                                     <?php echo htmlspecialchars(translate($pkg['title_id'], $pkg['title_en'])); ?>
                                 </a>
                             </h3>
@@ -306,15 +306,15 @@ require __DIR__ . '/../layouts/header.php';
                             <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100">
                                 <div>
                                     <span
-                                        class="block text-[10px] text-slate-400 font-semibold uppercase tracking-wide"><?php echo translate('Mulai dari', 'Starting from'); ?></span>
+                                        class="block text-[10px] text-slate-400 font-semibold uppercase tracking-wide"><?php echo e(translate('Mulai dari', 'Starting from')); ?></span>
                                     <span class="font-extrabold text-base text-teal-600">
-                                        <?php echo $_SESSION['lang'] === 'en' ? format_usd($pkg['price']) : format_rupiah($pkg['price']); ?>
+                                        <?php echo e($_SESSION['lang'] === 'en' ? format_usd($pkg['price']) : format_rupiah($pkg['price'])); ?>
                                     </span>
                                     <span class="text-[10px] text-slate-400"> / pax</span>
                                 </div>
-                                <a href="/tours/detail/<?php echo $pkg['id']; ?>"
+                                <a href="/tours/detail/<?php echo e($pkg['id']); ?>"
                                     class="px-5 py-2 rounded-full bg-cyan-50 text-cyan-700 hover:bg-cyan-600 hover:text-white text-xs font-bold transition-all">
-                                    <?php echo translate('Detail', 'View Details'); ?>
+                                    <?php echo e(translate('Detail', 'View Details')); ?>
                                 </a>
                             </div>
                         </div>
@@ -328,14 +328,14 @@ require __DIR__ . '/../layouts/header.php';
     <section class="mb-16">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
             <div>
-                <h2 class="section-title"><?php echo translate('Destinasi Utama', 'Top Destinations'); ?></h2>
+                <h2 class="section-title"><?php echo e(translate('Destinasi Utama', 'Top Destinations')); ?></h2>
                 <p class="section-subtitle">
-                    <?php echo translate('Tempat paling populer di Indonesia.', 'Most popular places to visit in Indonesia.'); ?>
+                    <?php echo e(translate('Tempat paling populer di Indonesia.', 'Most popular places to visit in Indonesia.')); ?>
                 </p>
             </div>
             <a href="/destinations"
                 class="btn-teal text-xs px-5 py-2.5 rounded-xl whitespace-nowrap self-start sm:self-auto">
-                <?php echo translate('Semua Destinasi', 'All Destinations'); ?>
+                <?php echo e(translate('Semua Destinasi', 'All Destinations')); ?>
             </a>
         </div>
 
@@ -361,7 +361,7 @@ require __DIR__ . '/../layouts/header.php';
                 }
                 $pCount = $destCounts[$dest['name_id']] ?? 2;
                 ?>
-                <a href="/destinations/detail/<?php echo $dest['slug']; ?>" class="dest-card">
+                <a href="/destinations/detail/<?php echo e($dest['slug']); ?>" class="dest-card">
                     <img src="/storage/uploads/<?php echo htmlspecialchars($img); ?>"
                         alt="<?php echo htmlspecialchars($dest['name_id']); ?>" loading="lazy">
                     <div class="dest-overlay"></div>
@@ -377,7 +377,7 @@ require __DIR__ . '/../layouts/header.php';
                         </h3>
                         <span
                             class="inline-block mt-2 text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full">
-                            <?php echo $pCount; ?>     <?php echo translate('Tours Available', 'Tours Available'); ?>
+                            <?php echo e($pCount); ?>     <?php echo e(translate('Tours Available', 'Tours Available')); ?>
                         </span>
                     </div>
                 </a>
@@ -400,26 +400,26 @@ require __DIR__ . '/../layouts/header.php';
                     <div>
                         <span class="badge-teal text-cyan-300 border-cyan-500/30 mb-4 inline-block"
                             style="background:rgba(14,165,233,.12);">
-                            <?php echo translate('Untuk Agen & Operator', 'For Travel Agencies & Operators'); ?>
+                            <?php echo e(translate('Untuk Agen & Operator', 'For Travel Agencies & Operators')); ?>
                         </span>
                         <h2 class="text-3xl sm:text-4xl font-black tracking-tight leading-[1.15]">
-                            <?php echo translate('Program Kemitraan B2B', 'B2B Partner Program'); ?>
+                            <?php echo e(translate('Program Kemitraan B2B', 'B2B Partner Program')); ?>
                         </h2>
                     </div>
                     <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-                        <?php echo translate(
+                        <?php echo e(translate(
                             'Terhubung dengan jaringan pemandu lokal terbaik, paket kustom, dan sistem manajemen pemesanan komprehensif untuk mendukung bisnis perjalanan Anda.',
                             'Connect with top local guides, custom packages, and a comprehensive booking management system to power your travel business.'
-                        ); ?>
+                        )); ?>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3 pt-1">
                         <a href="/register" class="btn-teal px-6 py-3 text-sm rounded-xl gap-2">
-                            <?php echo translate('Gabung Mitra B2B', 'Become a B2B Partner'); ?>
+                            <?php echo e(translate('Gabung Mitra B2B', 'Become a B2B Partner')); ?>
                             <i data-lucide="arrow-right" class="h-4 w-4"></i>
                         </a>
                         <a href="/login"
                             class="btn-outline-teal px-6 py-3 text-sm rounded-xl border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white hover:border-slate-600">
-                            <?php echo translate('Portal Kemitraan', 'Partner Portal'); ?>
+                            <?php echo e(translate('Portal Kemitraan', 'Partner Portal')); ?>
                         </a>
                     </div>
                 </div>
@@ -437,14 +437,14 @@ require __DIR__ . '/../layouts/header.php';
                         <div class="flex items-start gap-4 b2b-card">
                             <div
                                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400">
-                                <i data-lucide="<?php echo $f['icon']; ?>" class="h-5 w-5"></i>
+                                <i data-lucide="<?php echo e($f['icon']); ?>" class="h-5 w-5"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-sm text-white mb-1">
-                                    <?php echo translate($f['title_id'], $f['title_en']); ?>
+                                    <?php echo e(translate($f['title_id'], $f['title_en'])); ?>
                                 </h4>
                                 <p class="text-xs text-slate-500 leading-relaxed">
-                                    <?php echo translate($f['desc_id'], $f['desc_en']); ?>
+                                    <?php echo e(translate($f['desc_id'], $f['desc_en'])); ?>
                                 </p>
                             </div>
                         </div>

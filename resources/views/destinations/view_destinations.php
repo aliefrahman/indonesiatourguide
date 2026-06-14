@@ -49,7 +49,7 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                 <h3
                     class="text-lg font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3 flex items-center gap-2">
                     <i data-lucide="info" class="w-5 h-5 text-teal-500"></i>
-                    <span><?php echo translate('Tentang Destinasi', 'About Destination'); ?></span>
+                    <span><?php echo e(translate('Tentang Destinasi', 'About Destination')); ?></span>
                 </h3>
                 <p class="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
                     <?php echo htmlspecialchars(translate($destination['description_id'], $destination['description_en'])); ?>
@@ -61,22 +61,22 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                     <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
                         <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
                             <i data-lucide="earth" class="w-4 h-4 text-teal-500"></i>
-                            <span><?php echo translate('Lokasi Koordinat GPS', 'GPS Coordinates'); ?></span>
+                            <span><?php echo e(translate('Lokasi Koordinat GPS', 'GPS Coordinates')); ?></span>
                         </h3>
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
                             <div class="grid grid-cols-2 gap-4 text-slate-500 font-mono bg-slate-50 px-4 py-3 rounded-xl border border-slate-100 w-full sm:w-auto">
                                 <div>Latitude: <span
-                                        class="text-slate-800 font-bold"><?php echo $destination['latitude']; ?></span>
+                                        class="text-slate-800 font-bold"><?php echo e($destination['latitude']); ?></span>
                                 </div>
                                 <div>Longitude: <span
-                                        class="text-slate-800 font-bold"><?php echo $destination['longitude']; ?></span>
+                                        class="text-slate-800 font-bold"><?php echo e($destination['longitude']); ?></span>
                                 </div>
                             </div>
-                            <a href="https://www.google.com/maps/search/?api=1&query=<?php echo $destination['latitude']; ?>,<?php echo $destination['longitude']; ?>"
+                            <a href="https://www.google.com/maps/search/?api=1&query=<?php echo e($destination['latitude']); ?>,<?php echo e($destination['longitude']); ?>"
                                 target="_blank"
                                 class="px-4 py-2.5 bg-white border border-slate-200 rounded-xl hover:border-teal-300 text-teal-700 hover:text-teal-800 hover:bg-teal-50 font-bold text-center transition-all shadow-sm flex items-center justify-center gap-1.5 shrink-0">
                                 <i data-lucide="map" class="w-3.5 h-3.5"></i>
-                                <?php echo translate('Buka di Google Maps', 'Open in Google Maps'); ?>
+                                <?php echo e(translate('Buka di Google Maps', 'Open in Google Maps')); ?>
                             </a>
                         </div>
                     </div>
@@ -91,16 +91,16 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                         <h3
                             class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
                             <i data-lucide="images" class="w-4 h-4 text-teal-500"></i>
-                            <span><?php echo translate('Galeri Foto', 'Photo Gallery'); ?></span>
+                            <span><?php echo e(translate('Galeri Foto', 'Photo Gallery')); ?></span>
                         </h3>
 
                         <div class="grid grid-cols-2 gap-3">
                             <?php foreach ($images as $index => $img): ?>
                                     <button type="button"
-                                        onclick="openLightbox('<?php echo htmlspecialchars($img); ?>', <?php echo $index; ?>)"
+                                        onclick="openLightbox('<?php echo htmlspecialchars($img); ?>', <?php echo e($index); ?>)"
                                         class="group aspect-4/3 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 hover:border-teal-300 relative active:scale-[0.98] transition-all shadow-sm block w-full focus:outline-none">
                                         <img src="/storage/uploads/<?php echo htmlspecialchars($img); ?>"
-                                            alt="Gallery item <?php echo $index; ?>"
+                                            alt="Gallery item <?php echo e($index); ?>"
                                             class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">
                                         <div
                                             class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors">
@@ -127,15 +127,15 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                     <i data-lucide="compass"
                         class="text-teal-600 w-10 h-10 mx-auto mb-4"></i>
                     <h4 class="font-bold text-slate-900 mb-2">
-                        <?php echo translate('Tertarik Mengunjungi?', 'Interested in visiting?'); ?>
+                        <?php echo e(translate('Tertarik Mengunjungi?', 'Interested in visiting?')); ?>
                     </h4>
                     <p class="text-xs text-slate-600 mb-6 leading-relaxed">
-                        <?php echo translate('Cari paket wisata harian kami yang mencakup rute perjalanan ke destinasi indah ini.', 'Search our tour packages that cover this amazing location.'); ?>
+                        <?php echo e(translate('Cari paket wisata harian kami yang mencakup rute perjalanan ke destinasi indah ini.', 'Search our tour packages that cover this amazing location.')); ?>
                     </p>
-                    <a href="/tours?search=<?php echo urlencode($destination['location_name'] ?? $destination['name_id']); ?>"
+                    <a href="/tours?search=<?php echo e(urlencode($destination['location_name'] ?? $destination['name_id'])); ?>"
                         class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-teal-500 text-white font-bold text-sm hover:bg-teal-600 shadow-md active:scale-[0.98] transition-all">
                         <i data-lucide="route" class="w-4 h-4"></i>
-                        <?php echo translate('Cari Paket Terkait', 'Find Packages'); ?>
+                        <?php echo e(translate('Cari Paket Terkait', 'Find Packages')); ?>
                     </a>
                 </div>
             </div>
@@ -175,7 +175,7 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
         const caption = document.getElementById('lightbox-caption');
 
         img.src = '/storage/uploads/' + imgFilename;
-        caption.innerText = `Gambar ${index + 1} dari <?php echo count($images); ?>`;
+        caption.innerText = `Gambar ${index + 1} dari <?php echo e(count($images)); ?>`;
 
         modal.classList.remove('hidden');
         modal.classList.add('flex');

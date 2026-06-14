@@ -9,13 +9,13 @@ $currentLang = $_SESSION['lang'] ?? 'id';
     <!-- Page Header -->
     <div class="mb-12 text-center">
         <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            <?php echo translate('Daftar Paket Wisata Populer', 'Popular Tour Packages'); ?>
+            <?php echo e(translate('Daftar Paket Wisata Populer', 'Popular Tour Packages')); ?>
         </h1>
         <p class="mt-3 text-slate-500 text-sm max-w-xl mx-auto leading-relaxed">
-            <?php echo translate(
+            <?php echo e(translate(
                 'Temukan rencana petualangan harian terbaik Anda di Indonesia. Semua paket sudah termasuk pemandu lokal.',
                 'Find your ideal tour packages across beautiful Indonesia. Local tour guide and amenities are included in all packages.'
-            ); ?>
+            )); ?>
         </p>
     </div>
 
@@ -26,22 +26,22 @@ $currentLang = $_SESSION['lang'] ?? 'id';
         <div class="lg:col-span-1 space-y-6">
             <div class="bg-white border border-slate-200/80 p-6 rounded-2xl shadow-sm">
                 <h3 class="text-xs font-bold text-slate-800 mb-4 uppercase tracking-wider">
-                    <?php echo translate('Saring Kategori', 'Filter Category'); ?>
+                    <?php echo e(translate('Saring Kategori', 'Filter Category')); ?>
                 </h3>
                 
                 <div class="space-y-2.5">
                     <!-- All Packages Link -->
-                    <a href="/tours<?php echo !empty($searchKeyword) ? '?search=' . urlencode($searchKeyword) : ''; ?>" 
-                        class="flex items-center gap-2 text-xs font-bold px-3 py-2.5 rounded-xl border transition-all <?php echo empty($selectedCategory) ? 'border-teal-500 bg-teal-50 text-teal-600 shadow-sm' : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800'; ?>">
+                    <a href="/tours<?php echo e(!empty($searchKeyword) ? '?search=' . urlencode($searchKeyword) : ''); ?>" 
+                        class="flex items-center gap-2 text-xs font-bold px-3 py-2.5 rounded-xl border transition-all <?php echo e(empty($selectedCategory) ? 'border-teal-500 bg-teal-50 text-teal-600 shadow-sm' : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800'); ?>">
                         <i data-lucide="compass" class="h-3.5 w-3.5"></i>
-                        <span><?php echo translate('Semua Paket Wisata', 'All Packages'); ?></span>
+                        <span><?php echo e(translate('Semua Paket Wisata', 'All Packages')); ?></span>
                     </a>
                     
                     <!-- Categories Loop -->
                     <?php foreach ($categories as $cat): ?>
                         <?php $isSel = ($selectedCategory === $cat['slug']); ?>
-                        <a href="/tours?category=<?php echo $cat['slug']; ?><?php echo !empty($searchKeyword) ? '&search=' . urlencode($searchKeyword) : ''; ?>" 
-                            class="flex items-center gap-2 text-xs font-bold px-3 py-2.5 rounded-xl border transition-all <?php echo $isSel ? 'border-teal-500 bg-teal-50 text-teal-600 shadow-sm' : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800'; ?>">
+                        <a href="/tours?category=<?php echo e($cat['slug']); ?><?php echo e(!empty($searchKeyword) ? '&search=' . urlencode($searchKeyword) : ''); ?>" 
+                            class="flex items-center gap-2 text-xs font-bold px-3 py-2.5 rounded-xl border transition-all <?php echo e($isSel ? 'border-teal-500 bg-teal-50 text-teal-600 shadow-sm' : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800'); ?>">
                             <span class="text-sm leading-none"><?php echo htmlspecialchars($cat['icon']); ?></span>
                             <span><?php echo htmlspecialchars(translate($cat['name_id'], $cat['name_en'])); ?></span>
                         </a>
@@ -55,7 +55,7 @@ $currentLang = $_SESSION['lang'] ?? 'id';
             <?php if (empty($packages)): ?>
                 <div class="text-center py-20 bg-white border border-slate-200/80 rounded-2xl shadow-sm">
                     <i data-lucide="route" class="h-10 w-10 text-slate-300 mx-auto mb-4 font-light"></i>
-                    <p class="text-slate-500 text-sm"><?php echo translate('Tidak ada paket wisata yang tersedia.', 'No tour packages found.'); ?></p>
+                    <p class="text-slate-500 text-sm"><?php echo e(translate('Tidak ada paket wisata yang tersedia.', 'No tour packages found.')); ?></p>
                 </div>
             <?php else: ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -82,7 +82,7 @@ $currentLang = $_SESSION['lang'] ?? 'id';
                                     <div class="absolute bottom-3 left-4">
                                         <span class="inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-sm px-2.5 py-1 text-[10px] font-semibold text-white border border-white/10">
                                             <i data-lucide="clock" class="h-2.5 w-2.5 text-cyan-400"></i> 
-                                            <?php echo $pkg['duration_days']; ?> <?php echo translate('Hari', 'Days'); ?>
+                                            <?php echo e($pkg['duration_days']); ?> <?php echo e(translate('Hari', 'Days')); ?>
                                         </span>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ $currentLang = $_SESSION['lang'] ?? 'id';
                                     </div>
                                     
                                     <h3 class="font-bold text-sm text-slate-900 group-hover:text-teal-600 transition-colors line-clamp-1 leading-snug">
-                                        <a href="/tours/detail/<?php echo $pkg['id']; ?>">
+                                        <a href="/tours/detail/<?php echo e($pkg['id']); ?>">
                                             <?php echo htmlspecialchars(translate($pkg['title_id'], $pkg['title_en'])); ?>
                                         </a>
                                     </h3>
@@ -112,16 +112,16 @@ $currentLang = $_SESSION['lang'] ?? 'id';
                             <!-- Card Footer -->
                             <div class="px-5 pb-5 pt-4 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between">
                                 <div>
-                                    <span class="block text-[10px] text-slate-400 uppercase tracking-wide font-semibold"><?php echo translate('Mulai dari', 'Starting from'); ?></span>
+                                    <span class="block text-[10px] text-slate-400 uppercase tracking-wide font-semibold"><?php echo e(translate('Mulai dari', 'Starting from')); ?></span>
                                     <span class="font-extrabold text-base text-teal-600">
-                                        <?php echo $currentLang === 'en' ? format_usd($pkg['price']) : format_rupiah($pkg['price']); ?>
+                                        <?php echo e($currentLang === 'en' ? format_usd($pkg['price']) : format_rupiah($pkg['price'])); ?>
                                     </span>
                                     <span class="text-[10px] text-slate-400"> / pax</span>
                                 </div>
                                 
-                                <a href="/tours/detail/<?php echo $pkg['id']; ?>" 
+                                <a href="/tours/detail/<?php echo e($pkg['id']); ?>" 
                                     class="px-5 py-2 rounded-full bg-cyan-50 text-cyan-700 hover:bg-cyan-600 hover:text-white text-xs font-bold transition-all">
-                                    <?php echo translate('Detail', 'View Details'); ?>
+                                    <?php echo e(translate('Detail', 'View Details')); ?>
                                 </a>
                             </div>
                         </div>

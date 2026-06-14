@@ -197,14 +197,25 @@ class TourController
         if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] === UPLOAD_ERR_OK) {
             $tmp = $_FILES['cover_image']['tmp_name'];
             $name = basename($_FILES['cover_image']['name']);
-            $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
-            if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
-                $coverName = 'pkg_' . time() . '_' . rand(100, 999) . '.' . $ext;
-                $uploadDir = __DIR__ . '/../../storage/uploads/';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
+            $size = $_FILES['cover_image']['size'];
+            $mime = mime_content_type($tmp);
+            
+            $allowedMimes = ['image/jpeg', 'image/png', 'image/webp'];
+            $maxSize = 2 * 1024 * 1024; // 2 MB
+            
+            if (in_array($mime, $allowedMimes) && $size <= $maxSize) {
+                $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+                if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
+                    $coverName = 'pkg_' . time() . '_' . rand(100, 999) . '.' . $ext;
+                    $uploadDir = __DIR__ . '/../../storage/uploads/';
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0755, true);
+                    }
+                    move_uploaded_file($tmp, $uploadDir . $coverName);
                 }
-                move_uploaded_file($tmp, $uploadDir . $coverName);
+            } else {
+                flash('error', 'Format gambar tidak valid atau ukuran melebih 2MB.');
+                redirect('/admin/tours/create');
             }
         }
 
@@ -306,13 +317,24 @@ class TourController
         if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] === UPLOAD_ERR_OK) {
             $tmp = $_FILES['cover_image']['tmp_name'];
             $name = basename($_FILES['cover_image']['name']);
-            $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
-            if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
-                $coverName = 'pkg_' . time() . '_' . rand(100, 999) . '.' . $ext;
-                $uploadDir = __DIR__ . '/../../storage/uploads/';
-                if (move_uploaded_file($tmp, $uploadDir . $coverName)) {
-                    $data['cover_image'] = [$coverName]; // Timpa dengan gambar baru
+            $size = $_FILES['cover_image']['size'];
+            $mime = mime_content_type($tmp);
+            
+            $allowedMimes = ['image/jpeg', 'image/png', 'image/webp'];
+            $maxSize = 2 * 1024 * 1024; // 2 MB
+            
+            if (in_array($mime, $allowedMimes) && $size <= $maxSize) {
+                $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+                if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
+                    $coverName = 'pkg_' . time() . '_' . rand(100, 999) . '.' . $ext;
+                    $uploadDir = __DIR__ . '/../../storage/uploads/';
+                    if (move_uploaded_file($tmp, $uploadDir . $coverName)) {
+                        $data['cover_image'] = [$coverName]; // Timpa dengan gambar baru
+                    }
                 }
+            } else {
+                flash('error', 'Format gambar tidak valid atau ukuran melebih 2MB.');
+                redirect("/admin/tours/edit/$id");
             }
         }
 

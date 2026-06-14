@@ -16,7 +16,7 @@ require __DIR__ . '/../layouts/header.php';
     </div>
 
     <div class="bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-sm">
-        <form action="/categories/edit/<?php echo $category['id']; ?>" method="POST" class="space-y-6">
+        <form action="/categories/edit/<?php echo e($category['id']); ?>" method="POST" class="space-y-6">
             <?php echo \App\Core\Csrf::field(); ?>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -61,11 +61,11 @@ require __DIR__ . '/../layouts/header.php';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-center pt-2">
                 <div>
                     <label for="sort_order" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Urutan Sorting</label>
-                    <input id="sort_order" name="sort_order" type="number" value="<?php echo $category['sort_order']; ?>"
+                    <input id="sort_order" name="sort_order" type="number" value="<?php echo e($category['sort_order']); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                 </div>
                 <div class="flex items-center space-x-2 pt-6">
-                    <input id="is_active" name="is_active" type="checkbox" value="1" <?php echo $category['is_active'] ? 'checked' : ''; ?>
+                    <input id="is_active" name="is_active" type="checkbox" value="1" <?php echo e($category['is_active'] ? 'checked' : ''); ?>
                         class="h-4 w-4 rounded border-slate-300 bg-white text-teal-500 focus:ring-teal-500 cursor-pointer transition-all">
                     <label for="is_active" class="text-sm font-medium text-slate-700 cursor-pointer hover:text-teal-600 transition-colors">Aktifkan Kategori</label>
                 </div>

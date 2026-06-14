@@ -8,10 +8,10 @@ require __DIR__ . '/../layouts/header.php';
     
     <!-- Top Greeting Banner -->
     <div class="mb-10 bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-teal-50 rounded-full blur-3xl -z-0 opacity-50 pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-teal-50 rounded-full blur-3xl z-0 opacity-50 pointer-events-none"></div>
         <div class="relative z-10">
-            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight"><?php echo translate('Selamat Datang Kembali', 'Welcome Back'); ?>, <span class="text-teal-600"><?php echo htmlspecialchars($name); ?></span>!</h1>
-            <p class="text-sm text-slate-500 mt-1.5"><?php echo translate('Kelola pesanan, jadwal perjalanan, dan detail profil Anda di panel ini.', 'Manage your orders, travel itineraries, and profile details in this dashboard.'); ?></p>
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight"><?php echo e(translate('Selamat Datang Kembali', 'Welcome Back')); ?>, <span class="text-teal-600"><?php echo htmlspecialchars($name); ?></span>!</h1>
+            <p class="text-sm text-slate-500 mt-1.5"><?php echo e(translate('Kelola pesanan, jadwal perjalanan, dan detail profil Anda di panel ini.', 'Manage your orders, travel itineraries, and profile details in this dashboard.')); ?></p>
         </div>
         <div class="relative z-10 flex items-center space-x-2">
             <span class="text-xs font-bold bg-teal-50 text-teal-600 border border-teal-100 rounded-full px-4 py-1.5 uppercase tracking-wider shadow-xs">
@@ -28,29 +28,29 @@ require __DIR__ . '/../layouts/header.php';
                     <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                         <div class="absolute -right-4 -top-4 w-24 h-24 bg-teal-50 rounded-full group-hover:scale-110 transition-transform duration-500 ease-out"></div>
                         <div class="relative z-10 flex flex-col h-full justify-between">
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo translate('Total Pendapatan', 'Total Revenue'); ?></span>
-                            <span class="text-2xl font-black text-teal-600 mt-3 block"><?php echo format_rupiah($analytics['total_revenue']); ?></span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo e(translate('Total Pendapatan', 'Total Revenue')); ?></span>
+                            <span class="text-2xl font-black text-teal-600 mt-3 block"><?php echo e(format_rupiah($analytics['total_revenue'])); ?></span>
                         </div>
                     </div>
                     <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                         <div class="absolute -right-4 -top-4 w-24 h-24 bg-blue-50 rounded-full group-hover:scale-110 transition-transform duration-500 ease-out"></div>
                         <div class="relative z-10 flex flex-col h-full justify-between">
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo translate('Pesanan Aktif', 'Active Bookings'); ?></span>
-                            <span class="text-2xl font-black text-slate-800 mt-3 block"><?php echo $analytics['active_bookings']; ?></span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo e(translate('Pesanan Aktif', 'Active Bookings')); ?></span>
+                            <span class="text-2xl font-black text-slate-800 mt-3 block"><?php echo e($analytics['active_bookings']); ?></span>
                         </div>
                     </div>
                     <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                         <div class="absolute -right-4 -top-4 w-24 h-24 bg-amber-50 rounded-full group-hover:scale-110 transition-transform duration-500 ease-out"></div>
                         <div class="relative z-10 flex flex-col h-full justify-between">
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo translate('Pesanan Pending', 'Pending Bookings'); ?></span>
-                            <span class="text-2xl font-black text-amber-500 mt-3 block"><?php echo $analytics['pending_bookings']; ?></span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo e(translate('Pesanan Pending', 'Pending Bookings')); ?></span>
+                            <span class="text-2xl font-black text-amber-500 mt-3 block"><?php echo e($analytics['pending_bookings']); ?></span>
                         </div>
                     </div>
                     <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                         <div class="absolute -right-4 -top-4 w-24 h-24 bg-rose-50 rounded-full group-hover:scale-110 transition-transform duration-500 ease-out"></div>
                         <div class="relative z-10 flex flex-col h-full justify-between">
-                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo translate('Pesanan Gagal', 'Failed Bookings'); ?></span>
-                            <span class="text-2xl font-black text-rose-500 mt-3 block"><?php echo $analytics['failed_bookings']; ?></span>
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block"><?php echo e(translate('Pesanan Gagal', 'Failed Bookings')); ?></span>
+                            <span class="text-2xl font-black text-rose-500 mt-3 block"><?php echo e($analytics['failed_bookings']); ?></span>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ require __DIR__ . '/../layouts/header.php';
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-5 gap-4">
                         <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
                             <i data-lucide="layout-grid" class="w-5 h-5 text-teal-500"></i>
-                            <?php echo translate('Pintasan Manajemen Data', 'Data Management Shortcuts'); ?>
+                            <?php echo e(translate('Pintasan Manajemen Data', 'Data Management Shortcuts')); ?>
                         </h3>
                         <?php if ($role === 'admin'): ?>
                         <form action="/dashboard/sync" method="POST" class="inline-block" onsubmit="return confirm('Mulai sinkronisasi Smart Sync? Proses ini akan melakukan copy (UPSERT) dari SQLite ke MySQL.');">
@@ -74,20 +74,20 @@ require __DIR__ . '/../layouts/header.php';
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <a href="/admin/tours" class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-teal-300 hover:bg-teal-50 hover:shadow-sm transition-all group">
                             <div class="p-2 bg-white rounded-lg shadow-xs text-slate-600 group-hover:text-teal-600">💼</div>
-                            <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo translate('Paket Wisata', 'Tour Packages'); ?></span>
+                            <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo e(translate('Paket Wisata', 'Tour Packages')); ?></span>
                         </a>
                         <a href="/admin/destinations" class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-teal-300 hover:bg-teal-50 hover:shadow-sm transition-all group">
                             <div class="p-2 bg-white rounded-lg shadow-xs text-slate-600 group-hover:text-teal-600">🏔️</div>
-                            <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo translate('Destinasi', 'Destinations'); ?></span>
+                            <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo e(translate('Destinasi', 'Destinations')); ?></span>
                         </a>
                         <?php if ($role === 'admin'): ?>
                                     <a href="/categories" class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-teal-300 hover:bg-teal-50 hover:shadow-sm transition-all group">
                                         <div class="p-2 bg-white rounded-lg shadow-xs text-slate-600 group-hover:text-teal-600">🏷️</div>
-                                        <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo translate('Kategori', 'Categories'); ?></span>
+                                        <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo e(translate('Kategori', 'Categories')); ?></span>
                                     </a>
                                     <a href="/admin/users" class="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-teal-300 hover:bg-teal-50 hover:shadow-sm transition-all group">
                                         <div class="p-2 bg-white rounded-lg shadow-xs text-slate-600 group-hover:text-teal-600">👥</div>
-                                        <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo translate('Pengguna', 'Users'); ?></span>
+                                        <span class="font-bold text-sm text-slate-700 group-hover:text-teal-700"><?php echo e(translate('Pengguna', 'Users')); ?></span>
                                     </a>
                         <?php endif; ?>
                     </div>
@@ -97,7 +97,7 @@ require __DIR__ . '/../layouts/header.php';
                 <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-8 shadow-sm">
                     <h3 class="text-sm font-bold text-slate-800 mb-6 uppercase tracking-wider flex items-center space-x-2">
                         <i data-lucide="people-arrows" class="text-teal-500 w-5 h-5"></i>
-                        <span><?php echo translate('Daftar Pesanan & Penugasan Pemandu', 'Bookings & Tour Guide Allocations'); ?></span>
+                        <span><?php echo e(translate('Daftar Pesanan & Penugasan Pemandu', 'Bookings & Tour Guide Allocations')); ?></span>
                     </h3>
             
                     <div class="overflow-x-auto rounded-xl border border-slate-200">
@@ -127,27 +127,27 @@ require __DIR__ . '/../layouts/header.php';
                                                             <td class="py-3 px-4 font-mono font-bold text-slate-800"><?php echo htmlspecialchars($b['invoice_number']); ?></td>
                                                             <td class="py-3 px-4"><?php echo htmlspecialchars($b['traveler_name']); ?></td>
                                                             <td class="py-3 px-4"><?php echo htmlspecialchars($b['package_name_snapshot']); ?></td>
-                                                            <td class="py-3 px-4"><?php echo date('d M Y', strtotime($b['travel_date'])); ?></td>
-                                                            <td class="py-3 px-4 text-teal-600 font-black"><?php echo format_rupiah($b['total_price']); ?></td>
+                                                            <td class="py-3 px-4"><?php echo e(date('d M Y', strtotime($b['travel_date']))); ?></td>
+                                                            <td class="py-3 px-4 text-teal-600 font-black"><?php echo e(format_rupiah($b['total_price'])); ?></td>
                                                             <td class="py-3 px-4">
                                                                 <?php
                                                                 $statusClass = $b['payment_status'] === 'paid'
                                                                     ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
                                                                     : 'bg-amber-100 text-amber-800 border-amber-200';
                                                                 ?>
-                                                                <span class="inline-flex px-2 py-0.5 rounded-md text-[10px] font-bold border tracking-wider <?php echo $statusClass; ?>">
-                                                                    <?php echo strtoupper($b['payment_status']); ?>
+                                                                <span class="inline-flex px-2 py-0.5 rounded-md text-[10px] font-bold border tracking-wider <?php echo e($statusClass); ?>">
+                                                                    <?php echo e(strtoupper($b['payment_status'])); ?>
                                                                 </span>
                                                             </td>
                                                             <td class="py-2 px-4">
                                                                 <form action="/dashboard/booking/assign" method="POST" class="flex items-center gap-1.5">
                                                                     <?php echo \App\Core\Csrf::field(); ?>
-                                                                    <input type="hidden" name="booking_id" value="<?php echo $b['id']; ?>">
+                                                                    <input type="hidden" name="booking_id" value="<?php echo e($b['id']); ?>">
                                                                     <select name="guide_id" onchange="this.form.submit()" 
                                                                         class="rounded-lg border border-slate-200 bg-white py-1.5 px-2.5 text-xs text-slate-700 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 focus:outline-none transition-all shadow-xs w-full max-w-[180px]">
                                                                         <option value="">-- Bebaskan Guide --</option>
                                                                         <?php foreach ($guides as $guide): ?>
-                                                                                    <option value="<?php echo $guide['id']; ?>" <?php echo $b['guide_id'] == $guide['id'] ? 'selected' : ''; ?>>
+                                                                                    <option value="<?php echo e($guide['id']); ?>" <?php echo e($b['guide_id'] == $guide['id'] ? 'selected' : ''); ?>>
                                                                                         <?php echo htmlspecialchars($guide['name']); ?>
                                                                                     </option>
                                                                         <?php endforeach; ?>
@@ -170,7 +170,7 @@ require __DIR__ . '/../layouts/header.php';
                                 <div class="bg-white border border-slate-200 p-6 rounded-2xl overflow-hidden shadow-sm">
                                     <h3 class="text-sm font-bold text-slate-800 mb-5 uppercase tracking-wider flex items-center space-x-2">
                                         <i data-lucide="message-square" class="text-teal-500 w-5 h-5"></i>
-                                        <span>💬 <?php echo translate('CRM - Moderasi Ulasan Pengunjung', 'CRM - Reviews Moderation'); ?></span>
+                                        <span>💬 <?php echo e(translate('CRM - Moderasi Ulasan Pengunjung', 'CRM - Reviews Moderation')); ?></span>
                                     </h3>
                     
                                     <div class="space-y-4">
@@ -192,13 +192,13 @@ require __DIR__ . '/../layouts/header.php';
                                                                     <p class="text-sm text-slate-600 italic">"<?php echo htmlspecialchars($rev['comment']); ?>"</p>
                                     
                                                                     <div class="flex justify-between items-center pt-3 border-t border-slate-200/60 mt-3">
-                                                                        <span class="text-[10px] font-bold tracking-wider px-2 py-1 rounded-md <?php echo $rev['is_moderated'] ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'; ?>">
-                                                                            <?php echo $rev['is_moderated'] ? 'DISETUJUI' : 'BUTUH MODERASI'; ?>
+                                                                        <span class="text-[10px] font-bold tracking-wider px-2 py-1 rounded-md <?php echo e($rev['is_moderated'] ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'); ?>">
+                                                                            <?php echo e($rev['is_moderated'] ? 'DISETUJUI' : 'BUTUH MODERASI'); ?>
                                                                         </span>
                                         
                                                                         <form action="/dashboard/reviews/moderate" method="POST" class="flex gap-2">
                                                                             <?php echo \App\Core\Csrf::field(); ?>
-                                                                            <input type="hidden" name="review_id" value="<?php echo $rev['id']; ?>">
+                                                                            <input type="hidden" name="review_id" value="<?php echo e($rev['id']); ?>">
                                                                             <?php if ($rev['is_moderated'] == 0): ?>
                                                                                         <button type="submit" name="action" value="approve" class="px-3 py-1.5 rounded-lg bg-teal-500 text-white text-xs font-bold hover:bg-teal-600 transition-colors">Setujui</button>
                                                                             <?php else: ?>
@@ -216,7 +216,7 @@ require __DIR__ . '/../layouts/header.php';
                                 <div class="bg-white border border-slate-200 p-6 rounded-2xl overflow-hidden shadow-sm flex flex-col h-full">
                                     <h3 class="text-sm font-bold text-slate-800 mb-5 uppercase tracking-wider flex items-center space-x-2">
                                         <i data-lucide="user-shield" class="text-teal-500 w-5 h-5"></i>
-                                        <span><?php echo translate('Security Audit Logs', 'Security Activity Logs'); ?></span>
+                                        <span><?php echo e(translate('Security Audit Logs', 'Security Activity Logs')); ?></span>
                                     </h3>
                     
                                     <div class="overflow-y-auto max-h-[360px] space-y-3 pr-2 font-mono text-[10px]">
@@ -226,7 +226,7 @@ require __DIR__ . '/../layouts/header.php';
                                                     <?php foreach ($audit_logs as $log): ?>
                                                                 <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl shadow-xs">
                                                                     <div class="flex justify-between items-center text-slate-400 mb-2">
-                                                                        <span>[<?php echo date('d-m-Y H:i:s', strtotime($log['created_at'])); ?>]</span>
+                                                                        <span>[<?php echo e(date('d-m-Y H:i:s', strtotime($log['created_at']))); ?>]</span>
                                                                         <span class="text-teal-600 font-bold px-1.5 py-0.5 bg-teal-50 rounded text-[9px]"><?php echo htmlspecialchars($log['action_type']); ?></span>
                                                                     </div>
                                                                     <p class="text-slate-700 leading-relaxed font-sans text-xs"><?php echo htmlspecialchars($log['description']); ?></p>
@@ -254,14 +254,14 @@ require __DIR__ . '/../layouts/header.php';
                     <div class="lg:col-span-1 bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
                         <h3 class="text-sm font-bold text-slate-800 mb-4 uppercase tracking-wider flex items-center space-x-2">
                             <i data-lucide="calendar-check" class="text-teal-500 w-5 h-5"></i>
-                            <span><?php echo translate('Kalender Ketersediaan', 'Calendar Availability'); ?></span>
+                            <span><?php echo e(translate('Kalender Ketersediaan', 'Calendar Availability')); ?></span>
                         </h3>
                 
                         <p class="text-sm text-slate-500 leading-relaxed mb-6">
-                            <?php echo translate(
+                            <?php echo e(translate(
                                 'Matikan ketersediaan jika Anda sedang tidak aktif, sakit, atau cuti kerja agar operator tidak menugaskan Anda.',
                                 'Deactivate availability if you are unavailable or on leave to prevent operator assignment.'
-                            ); ?>
+                            )); ?>
                         </p>
 
                         <?php if ($guide): ?>
@@ -270,15 +270,15 @@ require __DIR__ . '/../layouts/header.php';
                         
                                         <div>
                                             <span class="text-xs font-bold text-slate-800 block">Status Jadwal</span>
-                                            <span class="text-[10px] <?php echo $guide['is_available'] ? 'text-emerald-600' : 'text-rose-600'; ?> font-bold uppercase mt-0.5 block">
-                                                <?php echo $guide['is_available'] ? 'Aktif Bekerja (Tersedia)' : 'Cuti (Tidak Tersedia)'; ?>
+                                            <span class="text-[10px] <?php echo e($guide['is_available'] ? 'text-emerald-600' : 'text-rose-600'); ?> font-bold uppercase mt-0.5 block">
+                                                <?php echo e($guide['is_available'] ? 'Aktif Bekerja (Tersedia)' : 'Cuti (Tidak Tersedia)'); ?>
                                             </span>
                                         </div>
                         
                                         <!-- Toggle Button -->
                                         <label for="is_avail" class="relative inline-flex items-center cursor-pointer">
                                             <input type="checkbox" name="is_available" id="is_avail" class="sr-only peer" 
-                                                <?php echo $guide['is_available'] ? 'checked' : ''; ?>
+                                                <?php echo e($guide['is_available'] ? 'checked' : ''); ?>
                                                 onchange="this.form.submit()">
                                             <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-500 peer-checked:after:border-white"></div>
                                         </label>
@@ -290,7 +290,7 @@ require __DIR__ . '/../layouts/header.php';
                     <div class="lg:col-span-2 bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
                         <h3 class="text-sm font-bold text-slate-800 mb-5 uppercase tracking-wider flex items-center space-x-2">
                             <i data-lucide="route" class="text-teal-500 w-5 h-5"></i>
-                            <span><?php echo translate('Tugas Perjalanan Aktif Anda', 'Your Assigned Trips'); ?></span>
+                            <span><?php echo e(translate('Tugas Perjalanan Aktif Anda', 'Your Assigned Trips')); ?></span>
                         </h3>
                 
                         <div class="space-y-4">
@@ -306,14 +306,14 @@ require __DIR__ . '/../layouts/header.php';
                                                             <span class="font-mono text-[10px] text-teal-600 font-bold bg-teal-50 px-2 py-0.5 rounded"><?php echo htmlspecialchars($trip['invoice_number']); ?></span>
                                                             <h4 class="font-bold text-slate-900 text-base mt-2"><?php echo htmlspecialchars($trip['package_name_snapshot']); ?></h4>
                                                             <div class="flex space-x-4 text-xs font-medium text-slate-500 mt-2">
-                                                                <span class="flex items-center"><i data-lucide="calendar" class="w-3.5 h-3.5 mr-1 text-teal-500"></i> <?php echo date('d M Y', strtotime($trip['travel_date'])); ?></span>
-                                                                <span class="flex items-center"><i data-lucide="users" class="w-3.5 h-3.5 mr-1 text-teal-500"></i> <?php echo $trip['total_participants']; ?> Travelers</span>
+                                                                <span class="flex items-center"><i data-lucide="calendar" class="w-3.5 h-3.5 mr-1 text-teal-500"></i> <?php echo e(date('d M Y', strtotime($trip['travel_date']))); ?></span>
+                                                                <span class="flex items-center"><i data-lucide="users" class="w-3.5 h-3.5 mr-1 text-teal-500"></i> <?php echo e($trip['total_participants']); ?> Travelers</span>
                                                             </div>
                                                         </div>
                                                         <div class="border-t border-slate-200 sm:border-t-0 pt-4 sm:pt-0 w-full sm:w-auto text-left sm:text-right">
-                                                            <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider"><?php echo translate('Kontak Konsumen', 'Traveler Contact'); ?></span>
+                                                            <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider"><?php echo e(translate('Kontak Konsumen', 'Traveler Contact')); ?></span>
                                                             <span class="block font-bold text-sm text-slate-800 mt-1"><?php echo htmlspecialchars($trip['traveler_name']); ?></span>
-                                                            <a href="https://wa.me/<?php echo $trip['traveler_phone']; ?>" target="_blank"
+                                                            <a href="https://wa.me/<?php echo e($trip['traveler_phone']); ?>" target="_blank"
                                                                 class="inline-flex items-center justify-center gap-1.5 mt-2 bg-emerald-50 border border-emerald-200 text-emerald-600 text-[11px] font-bold px-3 py-1.5 rounded-full hover:bg-emerald-500 hover:text-white transition-colors w-full sm:w-auto">
                                                                 <i data-lucide="whatsapp" class="w-3.5 h-3.5"></i> Chat WhatsApp
                                                             </a>
@@ -334,7 +334,7 @@ require __DIR__ . '/../layouts/header.php';
                 <div class="bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-sm">
                     <h3 class="text-sm font-bold text-slate-800 mb-6 uppercase tracking-wider flex items-center space-x-2">
                         <i data-lucide="history" class="text-teal-500 w-5 h-5"></i>
-                        <span><?php echo translate('Riwayat Pemesanan Wisata Anda', 'Your Booking History'); ?></span>
+                        <span><?php echo e(translate('Riwayat Pemesanan Wisata Anda', 'Your Booking History')); ?></span>
                     </h3>
             
                     <div class="space-y-6">
@@ -365,8 +365,8 @@ require __DIR__ . '/../layouts/header.php';
                                                             ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
                                                             : 'bg-amber-100 text-amber-800 border-amber-200';
                                                         ?>
-                                                        <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase border <?php echo $statusClass; ?> tracking-wider">
-                                                            <?php echo strtoupper($b['payment_status']); ?>
+                                                        <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase border <?php echo e($statusClass); ?> tracking-wider">
+                                                            <?php echo e(strtoupper($b['payment_status'])); ?>
                                                         </span>
                                                     </div>
 
@@ -375,11 +375,11 @@ require __DIR__ . '/../layouts/header.php';
                                                     <div class="grid grid-cols-2 gap-4 mb-5 text-sm text-slate-600 font-medium">
                                                         <div class="flex items-center gap-2">
                                                             <i data-lucide="calendar" class="w-4 h-4 text-teal-500"></i>
-                                                            <?php echo date('d M Y', strtotime($b['travel_date'])); ?>
+                                                            <?php echo e(date('d M Y', strtotime($b['travel_date']))); ?>
                                                         </div>
                                                         <div class="flex items-center gap-2">
                                                             <i data-lucide="user" class="w-4 h-4 text-teal-500"></i>
-                                                            <span class="truncate"><?php echo !empty($b['guide_name']) ? htmlspecialchars($b['guide_name']) : 'Cari Guide Otomatis'; ?></span>
+                                                            <span class="truncate"><?php echo e(!empty($b['guide_name']) ? htmlspecialchars($b['guide_name']) : 'Cari Guide Otomatis'); ?></span>
                                                         </div>
                                                     </div>
 
@@ -387,12 +387,12 @@ require __DIR__ . '/../layouts/header.php';
                                                     <div class="flex justify-between items-center pt-4 border-t border-slate-200">
                                                         <div>
                                                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">Total Harga</span>
-                                                            <span class="font-black text-slate-900 text-base"><?php echo format_rupiah($b['total_price']); ?></span>
+                                                            <span class="font-black text-slate-900 text-base"><?php echo e(format_rupiah($b['total_price'])); ?></span>
                                                         </div>
                                 
                                                         <!-- Star review button if paid -->
                                                         <?php if ($b['payment_status'] === 'paid'): ?>
-                                                                    <button onclick="toggleReviewForm('<?php echo $b['id']; ?>', '<?php echo htmlspecialchars(addslashes($b['package_name_snapshot'])); ?>')"
+                                                                    <button onclick="toggleReviewForm('<?php echo e($b['id']); ?>', '<?php echo htmlspecialchars(addslashes($b['package_name_snapshot'])); ?>')"
                                                                         class="px-4 py-2 rounded-xl bg-white border border-slate-200 hover:border-teal-300 hover:bg-teal-50 text-xs font-bold text-teal-700 active:scale-[0.98] transition-all shadow-xs flex items-center gap-1.5">
                                                                         <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i> Ulasan
                                                                     </button>

@@ -41,8 +41,8 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                 <?php echo htmlspecialchars(translate($package['title_id'], $package['title_en'])); ?>
             </h1>
             <div class="mt-4 flex flex-wrap gap-4 text-xs text-slate-300">
-                <span class="flex items-center"><i data-lucide="clock" class="text-teal-400 mr-1.5 h-4 w-4"></i> <?php echo $package['duration_days']; ?> <?php echo translate('Hari Perjalanan', 'Days Duration'); ?></span>
-                <span class="flex items-center"><i data-lucide="tags" class="text-teal-400 mr-1.5 h-4 w-4"></i> <?php echo strtoupper($package['category']); ?></span>
+                <span class="flex items-center"><i data-lucide="clock" class="text-teal-400 mr-1.5 h-4 w-4"></i> <?php echo e($package['duration_days']); ?> <?php echo e(translate('Hari Perjalanan', 'Days Duration')); ?></span>
+                <span class="flex items-center"><i data-lucide="tags" class="text-teal-400 mr-1.5 h-4 w-4"></i> <?php echo e(strtoupper($package['category'])); ?></span>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
             <div class="bg-white border border-slate-100 p-6 sm:p-8 rounded-2xl shadow-sm text-slate-700">
                 <h3 class="text-lg font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3 flex items-center space-x-2">
                     <i data-lucide="align-left" class="text-teal-600"></i>
-                    <span><?php echo translate('Deskripsi Paket', 'Package Description'); ?></span>
+                    <span><?php echo e(translate('Deskripsi Paket', 'Package Description')); ?></span>
                 </h3>
                 <p class="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
                     <?php echo htmlspecialchars(translate($package['description_id'], $package['description_en'])); ?>
@@ -69,11 +69,11 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
             <div class="bg-white border border-slate-100 p-6 sm:p-8 rounded-2xl shadow-sm text-slate-700">
                 <h3 class="text-lg font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3 flex items-center space-x-2">
                     <i data-lucide="map-pinned" class="text-teal-600"></i>
-                    <span>🗺️ <?php echo translate('Jadwal & Rencana Perjalanan Harian', 'Daily Itinerary Timeline'); ?></span>
+                    <span>🗺️ <?php echo e(translate('Jadwal & Rencana Perjalanan Harian', 'Daily Itinerary Timeline')); ?></span>
                 </h3>
 
                 <?php if (empty($itineraries)): ?>
-                    <p class="text-slate-400 text-xs py-4 text-center"><?php echo translate('Detail rencana perjalanan belum ditambahkan.', 'No itinerary schedule details added yet.'); ?></p>
+                    <p class="text-slate-400 text-xs py-4 text-center"><?php echo e(translate('Detail rencana perjalanan belum ditambahkan.', 'No itinerary schedule details added yet.')); ?></p>
                 <?php else: ?>
                     <!-- Timeline Container -->
                     <div class="space-y-8 relative before:absolute before:inset-y-0 before:left-3.5 before:w-0.5 before:bg-slate-100">
@@ -86,9 +86,9 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                             <!-- Day Header -->
                             <div class="relative pl-10 pt-4 first:pt-0">
                                 <div class="absolute left-0 top-4 first:top-0 flex h-7.5 w-7.5 items-center justify-center rounded-full bg-teal-500 text-slate-950 font-extrabold text-xs shadow-sm border-2 border-slate-100">
-                                    D<?php echo $currDay; ?>
+                                    D<?php echo e($currDay); ?>
                                 </div>
-                                <h4 class="text-sm font-black text-teal-600 uppercase tracking-widest"><?php echo translate("Hari ke-$currDay", "Day $currDay"); ?></h4>
+                                <h4 class="text-sm font-black text-teal-600 uppercase tracking-widest"><?php echo e(translate("Hari ke-$currDay", "Day $currDay")); ?></h4>
                             </div>
                         <?php endif; ?>
 
@@ -102,9 +102,9 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                                         <!-- Time block -->
                                         <span class="inline-flex items-center text-xs font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-lg border border-slate-100 w-fit">
                                             <i data-lucide="clock" class="mr-1 h-3.5 w-3.5 text-teal-600"></i> 
-                                            <?php echo date('H:i', strtotime($iti['time_start'])); ?> - <?php echo date('H:i', strtotime($iti['time_end'])); ?>
+                                            <?php echo e(date('H:i', strtotime($iti['time_start']))); ?> - <?php echo e(date('H:i', strtotime($iti['time_end']))); ?>
                                         </span>
-                                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider"><?php echo translate('Aktivitas', 'Activity'); ?></span>
+                                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider"><?php echo e(translate('Aktivitas', 'Activity')); ?></span>
                                     </div>
                                     
                                     <h5 class="text-slate-800 font-bold text-sm"><?php echo htmlspecialchars(translate($iti['activity_id'], $iti['activity_en'])); ?></h5>
@@ -125,13 +125,13 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
             <div class="bg-white border border-slate-100 p-6 sm:p-8 rounded-2xl shadow-sm text-slate-700">
                 <h3 class="text-lg font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3 flex items-center space-x-2">
                     <i data-lucide="message-square" class="text-teal-600"></i>
-                    <span>💬 <?php echo translate('Ulasan Pelanggan', 'Customer Reviews'); ?></span>
+                    <span>💬 <?php echo e(translate('Ulasan Pelanggan', 'Customer Reviews')); ?></span>
                 </h3>
 
                 <?php if (empty($reviews)): ?>
                     <div class="text-center py-6">
                         <i data-lucide="message-square" class="text-slate-300 text-2xl mb-2 mx-auto"></i>
-                        <p class="text-slate-400 text-xs"><?php echo translate('Belum ada ulasan untuk paket wisata ini.', 'No reviews yet for this package.'); ?></p>
+                        <p class="text-slate-400 text-xs"><?php echo e(translate('Belum ada ulasan untuk paket wisata ini.', 'No reviews yet for this package.')); ?></p>
                     </div>
                 <?php else: ?>
                     <div class="space-y-4">
@@ -140,17 +140,17 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
                                 <div class="flex justify-between items-start mb-2">
                                     <div class="flex items-center space-x-2.5">
                                         <div class="h-8 w-8 rounded-full bg-teal-50/50 text-teal-650 text-teal-600 flex items-center justify-center font-bold text-xs border border-teal-100">
-                                            <?php echo strtoupper(substr($rev['traveler_name'], 0, 1)); ?>
+                                            <?php echo e(strtoupper(substr($rev['traveler_name'], 0, 1))); ?>
                                         </div>
                                         <div>
                                             <h5 class="text-xs font-bold text-slate-800"><?php echo htmlspecialchars($rev['traveler_name']); ?></h5>
-                                            <p class="text-[10px] text-slate-400"><?php echo date('d M Y', strtotime($rev['created_at'])); ?></p>
+                                            <p class="text-[10px] text-slate-400"><?php echo e(date('d M Y', strtotime($rev['created_at']))); ?></p>
                                         </div>
                                     </div>
                                     <!-- Stars -->
                                     <div class="flex text-amber-400 text-xs">
                                         <?php for ($i = 0; $i < 5; $i++): ?>
-                                            <i data-lucide="star" class="h-3.5 w-3.5 <?php echo $i < $rev['rating'] ? 'text-amber-400 fill-amber-400' : 'text-slate-200'; ?>"></i>
+                                            <i data-lucide="star" class="h-3.5 w-3.5 <?php echo e($i < $rev['rating'] ? 'text-amber-400 fill-amber-400' : 'text-slate-200'); ?>"></i>
                                         <?php endfor; ?>
                                     </div>
                                 </div>
@@ -171,31 +171,31 @@ $heroImage = !empty($images) ? $images[0] : 'placeholder.jpg';
             <!-- Booking Card (White, clean shadow) -->
             <div class="bg-white border border-slate-100 p-6 rounded-2xl shadow-xl sticky top-20 text-slate-700">
                 <div class="mb-4">
-                    <span class="block text-[10px] text-slate-400 uppercase font-semibold tracking-wider"><?php echo translate('Harga Paket Wisata', 'Package Pricing'); ?></span>
+                    <span class="block text-[10px] text-slate-400 uppercase font-semibold tracking-wider"><?php echo e(translate('Harga Paket Wisata', 'Package Pricing')); ?></span>
                     <div class="flex items-baseline space-x-1.5 mt-1">
-                        <span class="text-2xl font-black text-teal-600"><?php echo format_rupiah($package['price']); ?></span>
+                        <span class="text-2xl font-black text-teal-600"><?php echo e(format_rupiah($package['price'])); ?></span>
                         <span class="text-xs text-slate-400"> / pax</span>
                     </div>
                     <!-- USD translation -->
-                    <span class="text-[10px] text-slate-400 font-medium block mt-0.5">(Estimasi: <?php echo format_usd($package['price']); ?> USD)</span>
+                    <span class="text-[10px] text-slate-400 font-medium block mt-0.5">(Estimasi: <?php echo e(format_usd($package['price'])); ?> USD)</span>
                 </div>
 
                 <div class="border-t border-slate-100 my-5 pt-4">
-                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3"><?php echo translate('Pilih Pemandu Wisata', 'Choose Tour Guide'); ?></h4>
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3"><?php echo e(translate('Pilih Pemandu Wisata', 'Choose Tour Guide')); ?></h4>
                     
-                    <form action="/tours/checkout/<?php echo $package['id']; ?>" method="GET" class="space-y-4">
+                    <form action="/tours/checkout/<?php echo e($package['id']); ?>" method="GET" class="space-y-4">
                         <select name="guide_id" class="block w-full rounded-xl border border-slate-200 bg-white py-2.5 px-3.5 text-xs text-slate-700 focus:border-teal-500 focus:outline-none transition-all">
-                            <option value=""><?php echo translate('-- Cari Guide Otomatis (Rekomendasi) --', '-- Auto Assign Guide (Recommended) --'); ?></option>
+                            <option value=""><?php echo e(translate('-- Cari Guide Otomatis (Rekomendasi) --', '-- Auto Assign Guide (Recommended) --')); ?></option>
                             <?php foreach ($guides as $guide): ?>
-                                <option value="<?php echo $guide['id']; ?>">
-                                    👤 <?php echo htmlspecialchars($guide['name']); ?> (⭐ <?php echo number_format($guide['rating_cache'], 1); ?>)
+                                <option value="<?php echo e($guide['id']); ?>">
+                                    👤 <?php echo htmlspecialchars($guide['name']); ?> (⭐ <?php echo e(number_format($guide['rating_cache'], 1)); ?>)
                                 </option>
                             <?php endforeach; ?>
                         </select>
                         
                         <button type="submit" 
                             class="flex w-full justify-center items-center rounded-xl bg-linear-to-r from-teal-500 to-emerald-500 py-3 px-4 text-sm font-black text-slate-950 shadow-md shadow-teal-500/20 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] transition-all">
-                            <i data-lucide="shopping-cart" class="mr-2"></i> <?php echo translate('Pesan Sekarang', 'Book Now'); ?>
+                            <i data-lucide="shopping-cart" class="mr-2"></i> <?php echo e(translate('Pesan Sekarang', 'Book Now')); ?>
                         </button>
                     </form>
                 </div>

@@ -29,12 +29,12 @@ require __DIR__ . '/../layouts/header.php';
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                         <label for="title_id" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Judul Paket (Bahasa)</label>
-                        <input id="title_id" name="title_id" type="text" required placeholder="Tur Pendakian Bromo 2 Hari" value="<?php echo old('title_id'); ?>"
+                        <input id="title_id" name="title_id" type="text" required placeholder="Tur Pendakian Bromo 2 Hari" value="<?php echo e(old('title_id')); ?>"
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                     </div>
                     <div>
                         <label for="title_en" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Judul Paket (English)</label>
-                        <input id="title_en" name="title_en" type="text" required placeholder="Bromo Hiking Tour 2 Days" value="<?php echo old('title_en'); ?>"
+                        <input id="title_en" name="title_en" type="text" required placeholder="Bromo Hiking Tour 2 Days" value="<?php echo e(old('title_en')); ?>"
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                     </div>
                 </div>
@@ -43,19 +43,19 @@ require __DIR__ . '/../layouts/header.php';
                     <div>
                         <label for="description_id" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Deskripsi Rinci (Bahasa)</label>
                         <textarea id="description_id" name="description_id" rows="4" required placeholder="Detail deskripsi paket wisata..."
-                            class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo old('description_id'); ?></textarea>
+                            class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo e(old('description_id')); ?></textarea>
                     </div>
                     <div>
                         <label for="description_en" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Deskripsi Rinci (English)</label>
                         <textarea id="description_en" name="description_en" rows="4" required placeholder="Detailed package description..."
-                            class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo old('description_en'); ?></textarea>
+                            class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-3 px-3.5 text-sm text-slate-800 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all"><?php echo e(old('description_en')); ?></textarea>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     <div>
                         <label for="price" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Harga Paket (Rp / pax)</label>
-                        <input id="price" name="price" type="number" required placeholder="750000" value="<?php echo old('price'); ?>"
+                        <input id="price" name="price" type="number" required placeholder="750000" value="<?php echo e(old('price')); ?>"
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                     </div>
                     <div>
@@ -79,17 +79,17 @@ require __DIR__ . '/../layouts/header.php';
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     <div>
                         <label for="location_name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nama Lokasi Soft-Ref</label>
-                        <input id="location_name" name="location_name" type="text" required placeholder="Gunung Bromo" value="<?php echo old('location_name'); ?>"
+                        <input id="location_name" name="location_name" type="text" required placeholder="Gunung Bromo" value="<?php echo e(old('location_name')); ?>"
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                     </div>
                     <div>
                         <label for="latitude" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Latitude (LBS)</label>
-                        <input id="latitude" name="latitude" type="text" placeholder="-7.942493" value="<?php echo old('latitude'); ?>"
+                        <input id="latitude" name="latitude" type="text" placeholder="-7.942493" value="<?php echo e(old('latitude')); ?>"
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                     </div>
                     <div>
                         <label for="longitude" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Longitude (LBS)</label>
-                        <input id="longitude" name="longitude" type="text" placeholder="112.953012" value="<?php echo old('longitude'); ?>"
+                        <input id="longitude" name="longitude" type="text" placeholder="112.953012" value="<?php echo e(old('longitude')); ?>"
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                     </div>
                 </div>

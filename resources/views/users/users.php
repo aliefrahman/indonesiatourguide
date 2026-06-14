@@ -7,12 +7,12 @@ require __DIR__ . '/../layouts/header.php';
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-            <h1 class="text-2xl font-black text-slate-900"><?php echo translate('Kelola Pengguna Sistem', 'Manage Users'); ?></h1>
-            <p class="text-xs text-slate-500 mt-1"><?php echo translate('Kelola data otentikasi pengguna, peran (admin, agent, guide, traveler), dan kontak telepon.', 'Manage user authentication records, role scopes, and contact info.'); ?></p>
+            <h1 class="text-2xl font-black text-slate-900"><?php echo e(translate('Kelola Pengguna Sistem', 'Manage Users')); ?></h1>
+            <p class="text-xs text-slate-500 mt-1"><?php echo e(translate('Kelola data otentikasi pengguna, peran (admin, agent, guide, traveler), dan kontak telepon.', 'Manage user authentication records, role scopes, and contact info.')); ?></p>
         </div>
         <a href="/admin/users/create" 
             class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-teal-500 text-white shadow-md hover:bg-teal-600 font-bold text-xs rounded-xl transition-all">
-            <i data-lucide="plus" class="w-4 h-4"></i> <?php echo translate('Tambah Pengguna', 'Add User'); ?>
+            <i data-lucide="plus" class="w-4 h-4"></i> <?php echo e(translate('Tambah Pengguna', 'Add User')); ?>
         </a>
     </div>
 
@@ -40,7 +40,7 @@ require __DIR__ . '/../layouts/header.php';
                             <tr class="hover:bg-slate-50/80 transition-colors">
                                 <td class="py-3 px-4 font-bold text-slate-900 flex items-center space-x-2">
                                     <span class="h-6 w-6 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-bold text-[10px] text-teal-600">
-                                        <?php echo strtoupper(substr($user['name'], 0, 1)); ?>
+                                        <?php echo e(strtoupper(substr($user['name'], 0, 1))); ?>
                                     </span>
                                     <span><?php echo htmlspecialchars($user['name']); ?></span>
                                 </td>
@@ -53,18 +53,18 @@ require __DIR__ . '/../layouts/header.php';
                                         elseif($user['role'] === 'guide') echo 'bg-sky-50 text-sky-700 border-sky-200';
                                         else echo 'bg-slate-100 text-slate-500 border-slate-200';
                                         ?>">
-                                        <?php echo $user['role']; ?>
+                                        <?php echo e($user['role']); ?>
                                     </span>
                                 </td>
                                 <td class="py-3 px-4"><?php echo htmlspecialchars($user['phone'] ?? '-'); ?></td>
-                                <td class="py-3 px-4 text-slate-500"><?php echo date('d-m-Y', strtotime($user['created_at'])); ?></td>
+                                <td class="py-3 px-4 text-slate-500"><?php echo e(date('d-m-Y', strtotime($user['created_at']))); ?></td>
                                 <td class="py-2 px-4 text-right">
                                     <div class="flex justify-end gap-2">
-                                        <a href="/admin/users/edit/<?php echo $user['id']; ?>" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-teal-600 hover:bg-teal-50 hover:border-teal-300 font-bold transition-all">Edit</a>
+                                        <a href="/admin/users/edit/<?php echo e($user['id']); ?>" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-teal-600 hover:bg-teal-50 hover:border-teal-300 font-bold transition-all">Edit</a>
                                         
                                         <!-- Cegah hapus diri sendiri -->
                                         <?php if ($user['id'] != $_SESSION['user_id']): ?>
-                                            <form action="/admin/users/delete/<?php echo $user['id']; ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')" class="inline">
+                                            <form action="/admin/users/delete/<?php echo e($user['id']); ?>" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')" class="inline">
                                                 <?php echo \App\Core\Csrf::field(); ?>
                                                 <button type="submit" class="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-rose-500 hover:bg-rose-50 hover:border-rose-200 font-bold transition-all">Hapus</button>
                                             </form>

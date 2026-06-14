@@ -29,14 +29,16 @@ class Security {
         }
     }
 
-    // Pembersihan input dari serangan XSS secara global
+    // Pembersihan input secara global (hanya menghapus karakter NUL dan spasi ekstra)
+    // PERHATIAN: Output escaping dipindahkan ke helper e() di level view.
     public static function sanitize($data) {
         if (is_array($data)) {
             foreach ($data as $key => $value) {
                 $data[$key] = self::sanitize($value);
             }
         } else {
-            $data = htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+            // Hapus null byte
+            $data = str_replace(chr(0), '', trim($data));
         }
         return $data;
     }

@@ -37,9 +37,10 @@ Sesuai dengan pedoman arsitektur PRD, pemilihan teknologi didasarkan pada prinsi
 | **Performa**           | Respons pencarian dan transaksi pemesanan < 2 detik. Konsumsi memori PHP dibatasi < 16MB per request.                                                                           |
 | **Penyimpanan Gambar** | Disimpan pada folder `storage/uploads`. Multi-upload cover image disimpan sebagai string JSON array pada kolom `cover_image` VARCHAR(255) yang ada.                             |
 | **Reorganisasi Views** | Views dipisahkan berdasarkan folder fitur/modul (`kategori`, `tour`, `destinasi`, `user`) untuk kemudahan maintenance.                                                          |
-| **Keamanan (6 Lapis)** | RBAC (Role-Based Access Control), arsitektur Zero-Trust, tabel audit log, proteksi token CSRF, _Rate Limiting_ Native, dan pencegahan SQL Injection (via PDO).                  |
-| **Session Storage**    | Disimpan di dalam lokal direktori `storage/sessions/` yang tidak terjangkau publik untuk menghindari masalah `permission denied` pada shared hosting.                           |
+| **Keamanan (8 Lapis)** | RBAC (Role-Based Access Control), arsitektur Zero-Trust, tabel audit log, proteksi token CSRF, _Rate Limiting_ Native, pencegahan SQL Injection (via PDO), pencegahan XSS (via Context-Aware Output Escaping), dan pengamanan RCE via restriksi direktori Upload.                  |
+| **Session Storage**    | Disimpan di dalam lokal direktori `storage/sessions/` yang tidak terjangkau publik untuk menghindari masalah `permission denied` pada shared hosting, dilengkapi mekanisme _Regenerate ID_ guna menangkal _Session Fixation_.                           |
 | **API Eksternal**      | LeafletJS + OpenStreetMap (untuk LBS), Midtrans/Xendit (Payment Gateway).                                                                                                       |
+| **Sinkronisasi Data**  | Smart Sync (_offline-to-online_) dari SQLite lokal ke MariaDB jarak jauh memanfaatkan logika `REPLACE INTO` untuk mencegah konflik integritas ganda (slug swapping).            |
 
 ---
 

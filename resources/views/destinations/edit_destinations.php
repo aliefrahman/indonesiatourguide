@@ -15,7 +15,7 @@ require __DIR__ . '/../layouts/header.php';
         <?php echo htmlspecialchars($destination['name_id']); ?></h1>
 
     <div class="bg-white border border-slate-200 px-6 py-6 shadow-sm rounded-2xl">
-        <form action="/admin/destinations/edit/<?php echo $destination['id']; ?>" method="POST"
+        <form action="/admin/destinations/edit/<?php echo e($destination['id']); ?>" method="POST"
             enctype="multipart/form-data" class="space-y-5">
             <?php echo \App\Core\Csrf::field(); ?>
 
@@ -112,13 +112,13 @@ require __DIR__ . '/../layouts/header.php';
                             $imgSrc = $imgExists ? '/storage/uploads/' . htmlspecialchars($img) : '/storage/uploads/placeholder.jpg';
                             ?>
                             <div class="relative group flex flex-col items-center">
-                                <img src="<?php echo $imgSrc; ?>" alt="cover"
+                                <img src="<?php echo e($imgSrc); ?>" alt="cover"
                                     class="h-16 w-24 object-cover rounded-xl border border-slate-200">
                                 <div class="mt-1 flex items-center space-x-1">
                                     <input type="checkbox" name="delete_images[]" value="<?php echo htmlspecialchars($img); ?>"
-                                        id="del_img_<?php echo $index; ?>"
+                                        id="del_img_<?php echo e($index); ?>"
                                         class="h-3.5 w-3.5 rounded border-slate-300 bg-slate-50 text-rose-500 focus:ring-rose-500">
-                                    <label for="del_img_<?php echo $index; ?>"
+                                    <label for="del_img_<?php echo e($index); ?>"
                                         class="text-[10px] font-bold text-slate-600 uppercase tracking-wider cursor-pointer hover:text-rose-600 transition-colors">
                                         Hapus
                                         <?php if (!$imgExists)
@@ -148,18 +148,18 @@ require __DIR__ . '/../layouts/header.php';
                         class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Urutan
                         Sorting</label>
                     <input id="sort_order" name="sort_order" type="number"
-                        value="<?php echo $destination['sort_order']; ?>"
+                        value="<?php echo e($destination['sort_order']); ?>"
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-xs text-slate-900 focus:border-teal-500 focus:bg-white focus:outline-none transition-all">
                 </div>
                 <div class="flex items-center space-x-2 pt-5">
-                    <input id="is_featured" name="is_featured" type="checkbox" value="1" <?php echo $destination['is_featured'] ? 'checked' : ''; ?>
+                    <input id="is_featured" name="is_featured" type="checkbox" value="1" <?php echo e($destination['is_featured'] ? 'checked' : ''); ?>
                         class="h-4 w-4 rounded border-slate-200 bg-slate-50 text-teal-500 focus:ring-teal-500">
                     <label for="is_featured"
                         class="text-xs font-bold text-slate-700 uppercase tracking-wider cursor-pointer">Featured (Top
                         Destinasi)</label>
                 </div>
                 <div class="flex items-center space-x-2 pt-5">
-                    <input id="is_active" name="is_active" type="checkbox" value="1" <?php echo $destination['is_active'] ? 'checked' : ''; ?>
+                    <input id="is_active" name="is_active" type="checkbox" value="1" <?php echo e($destination['is_active'] ? 'checked' : ''); ?>
                         class="h-4 w-4 rounded border-slate-200 bg-slate-50 text-teal-500 focus:ring-teal-500">
                     <label for="is_active"
                         class="text-xs font-bold text-slate-700 uppercase tracking-wider cursor-pointer">Aktifkan

@@ -109,9 +109,14 @@ Untuk memastikan performa, skalabilitas, dan kemudahan pemeliharaan (_maintenanc
 Aplikasi telah dirancang dan dikonfigurasi untuk siap berjalan di lingkungan *shared hosting* (seperti cPanel) dengan langkah-langkah keamanan dan kompatibilitas ekstra:
 
 1. **Kompatibilitas PHP 8.x**: Memiliki *polyfills* mandiri di `helpers.php` (seperti `str_starts_with`) untuk mencegah *fatal error* pada versi PHP yang sedikit lebih lama, serta perbaikan *deprecated static calls* di `Router.php`.
-2. **Menyembunyikan Error**: Konfigurasi `display_errors` dinonaktifkan di `index.php` pada mode produksi agar pesan error atau peringatan sistem PHP tidak bocor ke publik.
+2. **Kepatuhan OWASP Top 10 (Keamanan Ketat)**:
+   - **XSS Prevention**: Perlindungan *Context-Aware Output Escaping* otomatis di seluruh lapis *Views* dengan bantuan fungsi helper `e()`.
+   - **Session Fixation Prevention**: ID Sesi langsung diregenerasi setelah keberhasilan proses autentikasi (login).
+   - **Secure File Uploads**: Perlindungan RCE ganda via pembatasan MIME Type aktual (bukan sekadar ekstensi), limit ukuran MB yang rasional, dan penyisipan `.htaccess` anti-eksekusi di folder unggahan `storage/uploads/`.
+   - **Information Disclosure Prevention**: Konfigurasi `display_errors` dinonaktifkan sepenuhnya di `index.php` pada mode produksi berdasarkan deteksi variabel *Environment* `APP_ENV = production`.
 3. **Keamanan Direktori Berbasis Apache (`.htaccess`)**: 
    - Direktori *root* dan folder `public/` dilindungi dari pengindeksan file (`Options -Indexes`).
    - Direktori sistem (`app/`, `config/`, `resources/`, `storage/`, `node_modules/`) diblokir dari akses langsung HTTP (Status `403 Forbidden`).
    - File kredensial (`.env`, `*.md`, `*.json`) diblokir secara eksplisit di level Apache.
 4. **Parsing Konfigurasi `.env` Lebih Andal**: Logika pembaca `.env` bawaan memastikan string kredensial (seperti *username* database) dibersihkan dari komentar *inline*, mencegah kegagalan koneksi database.
+5. **Smart Data Synchronization**: Terdapat fitur sinkronisasi *offline-to-online* yang menggunakan logika cerdas `REPLACE INTO` untuk menyatukan data *database* SQLite sementara (lokal) ke MariaDB produksi tanpa menimbulkan bentrokan kendala duplikat (seperti insiden _slug swapping_).

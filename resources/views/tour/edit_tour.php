@@ -16,7 +16,7 @@ require __DIR__ . '/../layouts/header.php';
     </div>
 
     <div class="bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-sm">
-        <form action="/admin/tours/edit/<?php echo $package['id']; ?>" method="POST" enctype="multipart/form-data" class="space-y-8">
+        <form action="/admin/tours/edit/<?php echo e($package['id']); ?>" method="POST" enctype="multipart/form-data" class="space-y-8">
             <?php echo \App\Core\Csrf::field(); ?>
 
             <!-- Basic Info Section -->
@@ -68,7 +68,7 @@ require __DIR__ . '/../layouts/header.php';
                         <select id="category" name="category" required 
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
                             <?php foreach ($categories as $cat): ?>
-                                        <option value="<?php echo htmlspecialchars($cat['slug']); ?>" <?php echo $package['category'] === $cat['slug'] ? 'selected' : ''; ?>>
+                                        <option value="<?php echo htmlspecialchars($cat['slug']); ?>" <?php echo e($package['category'] === $cat['slug'] ? 'selected' : ''); ?>>
                                             <?php echo htmlspecialchars(translate($cat['name_id'], $cat['name_en'])); ?>
                                         </option>
                             <?php endforeach; ?>
@@ -190,17 +190,17 @@ require __DIR__ . '/../layouts/header.php';
                                                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                                     <div>
                                                         <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Hari ke-</label>
-                                                        <input type="number" name="iti_day[]" value="<?php echo $iti['day_number']; ?>" min="1" required
+                                                        <input type="number" name="iti_day[]" value="<?php echo e($iti['day_number']); ?>" min="1" required
                                                             class="block w-full rounded-lg border border-slate-200 bg-white py-2 px-3 text-xs text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-all">
                                                     </div>
                                                     <div>
                                                         <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Jam Mulai</label>
-                                                        <input type="time" name="iti_start[]" value="<?php echo date('H:i', strtotime($iti['time_start'])); ?>" required
+                                                        <input type="time" name="iti_start[]" value="<?php echo e(date('H:i', strtotime($iti['time_start']))); ?>" required
                                                             class="block w-full rounded-lg border border-slate-200 bg-white py-2 px-3 text-xs text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-all">
                                                     </div>
                                                     <div>
                                                         <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Jam Selesai</label>
-                                                        <input type="time" name="iti_end[]" value="<?php echo date('H:i', strtotime($iti['time_end'])); ?>" required
+                                                        <input type="time" name="iti_end[]" value="<?php echo e(date('H:i', strtotime($iti['time_end']))); ?>" required
                                                             class="block w-full rounded-lg border border-slate-200 bg-white py-2 px-3 text-xs text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-all">
                                                     </div>
                                                 </div>

@@ -16,7 +16,7 @@ require __DIR__ . '/../layouts/header.php';
     </div>
 
     <div class="bg-white border border-slate-200 p-6 sm:p-8 rounded-2xl shadow-sm">
-        <form action="/admin/users/edit/<?php echo $user['id']; ?>" method="POST" class="space-y-6">
+        <form action="/admin/users/edit/<?php echo e($user['id']); ?>" method="POST" class="space-y-6">
             <?php echo \App\Core\Csrf::field(); ?>
 
             <div>
@@ -48,10 +48,10 @@ require __DIR__ . '/../layouts/header.php';
                     <label for="role" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Peran / Role</label>
                     <select id="role" name="role" required
                         class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 px-3.5 text-sm text-slate-800 font-medium focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all">
-                        <option value="traveler" <?php echo $user['role'] === 'traveler' ? 'selected' : ''; ?>>Traveler (Visitor)</option>
-                        <option value="guide" <?php echo $user['role'] === 'guide' ? 'selected' : ''; ?>>Tour Guide (Pemandu)</option>
-                        <option value="agent" <?php echo $user['role'] === 'agent' ? 'selected' : ''; ?>>Travel Agent Partner (Partner)</option>
-                        <option value="admin" <?php echo $user['role'] === 'admin' ? 'selected' : ''; ?>>Administrator (Admin)</option>
+                        <option value="traveler" <?php echo e($user['role'] === 'traveler' ? 'selected' : ''); ?>>Traveler (Visitor)</option>
+                        <option value="guide" <?php echo e($user['role'] === 'guide' ? 'selected' : ''); ?>>Tour Guide (Pemandu)</option>
+                        <option value="agent" <?php echo e($user['role'] === 'agent' ? 'selected' : ''); ?>>Travel Agent Partner (Partner)</option>
+                        <option value="admin" <?php echo e($user['role'] === 'admin' ? 'selected' : ''); ?>>Administrator (Admin)</option>
                     </select>
                 </div>
             </div>

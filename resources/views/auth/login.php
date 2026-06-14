@@ -7,12 +7,12 @@ require __DIR__ . '/../layouts/header.php';
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 class="mt-6 text-center text-3xl font-black tracking-tight text-slate-900">
-            <?php echo translate('Masuk ke Akun', 'Sign In to Account'); ?>
+            <?php echo e(translate('Masuk ke Akun', 'Sign In to Account')); ?>
         </h2>
         <p class="mt-2 text-center text-sm text-slate-500">
-            <?php echo translate('Atau', 'Or'); ?>
+            <?php echo e(translate('Atau', 'Or')); ?>
             <a href="/register" class="font-bold text-teal-600 hover:text-teal-500 transition-colors">
-                <?php echo translate('daftar traveler baru disini', 'register a new traveler here'); ?>
+                <?php echo e(translate('daftar traveler baru disini', 'register a new traveler here')); ?>
             </a>
         </p>
     </div>
@@ -26,10 +26,10 @@ require __DIR__ . '/../layouts/header.php';
                 class="mb-5 flex items-start space-x-2.5 rounded-xl bg-amber-50 border border-amber-200 p-4 text-xs text-amber-700">
                 <i data-lucide="triangle-exclamation" class="mt-0.5 shrink-0 text-amber-500"></i>
                 <p>
-                    <?php echo translate(
+                    <?php echo e(translate(
                         'Demi keamanan, batas percobaan masuk salah adalah 5 kali. Jika melebihi batas, akun Anda akan dikunci selama 15 menit.',
                         'For security, login is limited to 5 attempts. Exceeding this limit will lock your access for 15 minutes.'
-                    ); ?>
+                    )); ?>
                 </p>
             </div>
 
@@ -48,7 +48,7 @@ require __DIR__ . '/../layouts/header.php';
                         </div>
                         <input id="email" name="email" type="email" autocomplete="email" required
                             class="block w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-slate-800 font-medium placeholder-slate-400 focus:border-teal-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-teal-500 sm:text-sm transition-all"
-                            placeholder="nama@email.com" value="<?php echo old('email'); ?>">
+                            placeholder="nama@email.com" value="<?php echo e(old('email')); ?>">
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@ require __DIR__ . '/../layouts/header.php';
                         <div class="text-sm">
                             <a href="/forgot"
                                 class="font-bold text-teal-600 hover:text-teal-500 text-xs transition-colors">
-                                <?php echo translate('Lupa sandi?', 'Forgot password?'); ?>
+                                <?php echo e(translate('Lupa sandi?', 'Forgot password?')); ?>
                             </a>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ require __DIR__ . '/../layouts/header.php';
                     <button type="submit"
                         class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-500 py-3 px-4 text-sm font-bold text-white shadow-md hover:bg-teal-600 active:scale-[0.98] transition-all">
                         <i data-lucide="log-in" class="w-4 h-4"></i>
-                        <?php echo translate('Masuk Sekarang', 'Sign In'); ?>
+                        <?php echo e(translate('Masuk Sekarang', 'Sign In')); ?>
                     </button>
                 </div>
             </form>

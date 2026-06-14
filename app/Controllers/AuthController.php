@@ -36,6 +36,9 @@ class AuthController {
         $user = UserModel::findByEmail($email);
 
         if ($user && password_verify($password, $user['password'])) {
+            // Regenerate session ID untuk mencegah serangan Session Fixation (Rule 4)
+            session_regenerate_id(true);
+
             // Reset counter rate limit jika berhasil login
             RateLimiter::resetAttempts();
 

@@ -1,0 +1,12 @@
+# Menonaktifkan eksekusi PHP atau skrip lain di folder uploads
+php_flag engine off
+RemoveHandler .phtml .php .php3 .php4 .php5 .php6 .phps .cgi .exe .pl .asp .aspx .shtml .shtm .fcgi .fpl .jsp .htm .html .wml
+
+# Mencegah akses ke file dengan ekstensi tertentu
+<FilesMatch "\.(php|phtml|php3|php4|php5|php6|phps|cgi|exe|pl|asp|aspx|shtml|shtm|fcgi|fpl|jsp|htm|html|wml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Menolak browsing direktori
+Options -Indexes

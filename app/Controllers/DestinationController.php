@@ -224,14 +224,25 @@ class DestinationController {
                 if ($files['error'][$i] === UPLOAD_ERR_OK) {
                     $tmpName = $files['tmp_name'][$i];
                     $name = basename($files['name'][$i]);
-                    // Ambil ekstensi
-                    $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
-                    $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                    $size = $files['size'][$i];
                     
-                    if (in_array($ext, $allowed)) {
-                        $newName = 'dest_' . time() . '_' . rand(1000, 9999) . '.' . $ext;
-                        if (move_uploaded_file($tmpName, $uploadDir . $newName)) {
-                            $images[] = $newName;
+                    if (empty($tmpName) || !file_exists($tmpName)) {
+                        continue;
+                    }
+
+                    $mime = mime_content_type($tmpName);
+                    $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+                    $maxSize = 2 * 1024 * 1024; // 2 MB
+
+                    if (in_array($mime, $allowedMimes) && $size <= $maxSize) {
+                        $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+                        $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                        
+                        if (in_array($ext, $allowed)) {
+                            $newName = 'dest_' . time() . '_' . rand(1000, 9999) . '.' . $ext;
+                            if (move_uploaded_file($tmpName, $uploadDir . $newName)) {
+                                $images[] = $newName;
+                            }
                         }
                     }
                 }

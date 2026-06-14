@@ -3,12 +3,12 @@
 $currentLang = $_SESSION['lang'] ?? 'id';
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $currentLang; ?>" class="h-full bg-slate-955 text-slate-100">
+<html lang="<?php echo e($currentLang); ?>" class="h-full bg-slate-955 text-slate-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo translate('Situs dalam Pemeliharaan - IndoTour', 'Site Under Maintenance - IndoTour'); ?></title>
+    <title><?php echo e(translate('Situs dalam Pemeliharaan - IndoTour', 'Site Under Maintenance - IndoTour')); ?></title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,21 +43,21 @@ $currentLang = $_SESSION['lang'] ?? 'id';
 
             <!-- Title -->
             <h1 class="text-3xl font-black tracking-tight text-white md:text-4xl mb-4">
-                <?php echo translate('Sedang dalam Pemeliharaan', 'Under Maintenance'); ?>
+                <?php echo e(translate('Sedang dalam Pemeliharaan', 'Under Maintenance')); ?>
             </h1>
 
             <!-- Description -->
             <p class="text-slate-450 text-sm md:text-base mb-8 leading-relaxed">
-                <?php echo translate(
+                <?php echo e(translate(
                     'Kami sedang melakukan peningkatan sistem untuk memberikan pengalaman terbaik kepada Anda. Silakan kembali beberapa saat lagi.',
                     'We are currently performing scheduled system upgrades to improve our service. Please check back shortly.'
-                ); ?>
+                )); ?>
             </p>
 
             <!-- Language selector inside card -->
             <div class="flex justify-center items-center space-x-2 bg-slate-955/50 border border-slate-800/80 rounded-full p-0.5 max-w-[120px] mx-auto mb-8 shadow-inner">
-                <a href="/lang/id" class="flex-1 px-3 py-1 text-xs rounded-full font-bold transition-all <?php echo $currentLang === 'id' ? 'bg-linear-to-r from-teal-500 to-emerald-500 text-slate-950 shadow-md' : 'text-slate-400 hover:text-slate-200'; ?>">ID</a>
-                <a href="/lang/en" class="flex-1 px-3 py-1 text-xs rounded-full font-bold transition-all <?php echo $currentLang === 'en' ? 'bg-linear-to-r from-teal-500 to-emerald-500 text-slate-950 shadow-md' : 'text-slate-400 hover:text-slate-200'; ?>">EN</a>
+                <a href="/lang/id" class="flex-1 px-3 py-1 text-xs rounded-full font-bold transition-all <?php echo e($currentLang === 'id' ? 'bg-linear-to-r from-teal-500 to-emerald-500 text-slate-950 shadow-md' : 'text-slate-400 hover:text-slate-200'); ?>">ID</a>
+                <a href="/lang/en" class="flex-1 px-3 py-1 text-xs rounded-full font-bold transition-all <?php echo e($currentLang === 'en' ? 'bg-linear-to-r from-teal-500 to-emerald-500 text-slate-950 shadow-md' : 'text-slate-400 hover:text-slate-200'); ?>">EN</a>
             </div>
 
             <!-- Divider -->
@@ -66,11 +66,11 @@ $currentLang = $_SESSION['lang'] ?? 'id';
             <!-- Admin Access Link -->
             <div class="flex flex-col items-center justify-center space-y-2">
                 <p class="text-xs text-slate-500">
-                    <?php echo translate('Apakah Anda Administrator?', 'Are you an Administrator?'); ?>
+                    <?php echo e(translate('Apakah Anda Administrator?', 'Are you an Administrator?')); ?>
                 </p>
                 <a href="/login" class="inline-flex items-center space-x-2 px-5 py-2 rounded-full border border-teal-500/30 hover:border-teal-500/60 bg-teal-950/20 text-teal-400 hover:text-teal-300 font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98]">
                     <i data-lucide="shield-alert" class="h-4 w-4"></i>
-                    <span><?php echo translate('Masuk sebagai Admin', 'Login as Admin'); ?></span>
+                    <span><?php echo e(translate('Masuk sebagai Admin', 'Login as Admin')); ?></span>
                 </a>
             </div>
         </div>
@@ -78,7 +78,7 @@ $currentLang = $_SESSION['lang'] ?? 'id';
 
     <!-- Small footer -->
     <div class="mt-8 text-center text-xs text-slate-600">
-        &copy; <?php echo date('Y'); ?> IndoTour. <?php echo translate('Hak Cipta Dilindungi.', 'All rights reserved.'); ?>
+        &copy; <?php echo e(date('Y')); ?> IndoTour. <?php echo e(translate('Hak Cipta Dilindungi.', 'All rights reserved.')); ?>
     </div>
 
     <script>

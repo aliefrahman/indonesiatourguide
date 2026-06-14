@@ -9,12 +9,12 @@ $navClasses = $isHome
     : 'sticky bg-white/95 backdrop-blur-md border-b border-slate-100 transition-shadow duration-300';
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $currentLang; ?>" class="h-full">
+<html lang="<?php echo e($currentLang); ?>" class="h-full">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle ?? 'Indonesian Tour Guide - Platform Digital Pemandu Wisata Lokal'; ?></title>
+    <title><?php echo e($pageTitle ?? 'Indonesian Tour Guide - Platform Digital Pemandu Wisata Lokal'); ?></title>
     <!-- Google Fonts — Plus Jakarta Sans + Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@ $navClasses = $isHome
 
     <!-- NAVBAR — Transparent overlay on homepage, solid glassmorphic header on other pages -->
     <nav id="main-nav"
-        class="top-0 z-50 w-full <?php echo $navClasses; ?>">
+        class="top-0 z-50 w-full <?php echo e($navClasses); ?>">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between gap-4">
 
@@ -53,23 +53,23 @@ $navClasses = $isHome
                 <div class="hidden md:flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider">
                     <a href="/"
                         class="px-3 py-2 rounded-lg text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 transition-all">
-                        <?php echo translate('Beranda', 'Home'); ?>
+                        <?php echo e(translate('Beranda', 'Home')); ?>
                     </a>
                     <a href="/tours"
                         class="px-3 py-2 rounded-lg text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 transition-all">
-                        <?php echo translate('Paket Wisata', 'Tours'); ?>
+                        <?php echo e(translate('Paket Wisata', 'Tours')); ?>
                     </a>
                     <a href="/#b2b-section"
                         class="px-3 py-2 rounded-lg text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 transition-all">
-                        <?php echo translate('Kemitraan B2B', 'B2B Partnership'); ?>
+                        <?php echo e(translate('Kemitraan B2B', 'B2B Partnership')); ?>
                     </a>
                     <a href="#"
                         class="px-3 py-2 rounded-lg text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 transition-all">
-                        <?php echo translate('FAQ', 'FAQs'); ?>
+                        <?php echo e(translate('FAQ', 'FAQs')); ?>
                     </a>
                     <a href="#contact"
                         class="px-3 py-2 rounded-lg text-slate-600 hover:text-teal-600 hover:bg-teal-50/50 transition-all">
-                        <?php echo translate('Kontak', 'Contact'); ?>
+                        <?php echo e(translate('Kontak', 'Contact')); ?>
                     </a>
                     <?php if ($authUser && ($authUser->role === 'admin' || $authUser->role === 'agent')): ?>
                         <a href="/dashboard"
@@ -86,9 +86,9 @@ $navClasses = $isHome
                     <div
                         class="hidden sm:flex items-center bg-slate-100 rounded-full p-0.5 text-xs font-bold lang-toggle-container">
                         <a href="/lang/id"
-                            class="px-2.5 py-1 rounded-full transition-all lang-toggle-link <?php echo $currentLang === 'id' ? 'bg-white text-teal-600 shadow-sm active-lang' : 'text-slate-500 hover:text-slate-700'; ?>">ID</a>
+                            class="px-2.5 py-1 rounded-full transition-all lang-toggle-link <?php echo e($currentLang === 'id' ? 'bg-white text-teal-600 shadow-sm active-lang' : 'text-slate-500 hover:text-slate-700'); ?>">ID</a>
                         <a href="/lang/en"
-                            class="px-2.5 py-1 rounded-full transition-all lang-toggle-link <?php echo $currentLang === 'en' ? 'bg-white text-teal-600 shadow-sm active-lang' : 'text-slate-500 hover:text-slate-700'; ?>">EN</a>
+                            class="px-2.5 py-1 rounded-full transition-all lang-toggle-link <?php echo e($currentLang === 'en' ? 'bg-white text-teal-600 shadow-sm active-lang' : 'text-slate-500 hover:text-slate-700'); ?>">EN</a>
                     </div>
 
                     <?php if ($authUser): ?>
@@ -98,7 +98,7 @@ $navClasses = $isHome
                                 class="flex items-center gap-2 rounded-full border border-slate-200 bg-white pl-1 pr-3 py-1 text-sm font-semibold text-slate-700 hover:border-teal-400 hover:text-teal-600 transition-all shadow-sm">
                                 <span
                                     class="h-6 w-6 rounded-full bg-linear-to-br from-cyan-500 to-teal-600 text-white flex items-center justify-center font-bold text-[10px]">
-                                    <?php echo strtoupper(substr($authUser->name, 0, 1)); ?>
+                                    <?php echo e(strtoupper(substr($authUser->name, 0, 1))); ?>
                                 </span>
                                 <span class="max-w-[90px] truncate"><?php echo htmlspecialchars($authUser->name); ?></span>
                                 <i data-lucide="chevron-down" class="h-3.5 w-3.5 text-slate-400"></i>
@@ -108,8 +108,8 @@ $navClasses = $isHome
                             <div id="user-dropdown"
                                 class="hidden absolute right-0 mt-2 w-52 rounded-xl border border-slate-100 bg-white p-1.5 shadow-xl ring-1 ring-black/5">
                                 <div class="px-3 py-2 mb-1 text-[10px] text-slate-400 border-b border-slate-100">
-                                    <?php echo translate('Masuk sebagai:', 'Logged in as:'); ?>
-                                    <span class="font-bold text-teal-600"><?php echo strtoupper($authUser->role); ?></span>
+                                    <?php echo e(translate('Masuk sebagai:', 'Logged in as:')); ?>
+                                    <span class="font-bold text-teal-600"><?php echo e(strtoupper($authUser->role)); ?></span>
                                 </div>
                                 <a href="/dashboard"
                                     class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-teal-50 hover:text-teal-600 transition-colors">
@@ -118,7 +118,7 @@ $navClasses = $isHome
                                 <a href="/profile/edit"
                                     class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-teal-50 hover:text-teal-600 transition-colors">
                                     <i data-lucide="user-round-pen" class="h-4 w-4"></i>
-                                    <?php echo translate('Edit Profil', 'Edit Profile'); ?>
+                                    <?php echo e(translate('Edit Profil', 'Edit Profile')); ?>
                                 </a>
                                 <?php if ($authUser->role === 'admin'): ?>
                                     <div class="h-px bg-slate-100 my-1"></div>
@@ -153,12 +153,12 @@ $navClasses = $isHome
                         <div class="hidden sm:flex items-center gap-2">
                             <a href="/login"
                                 class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">
-                                <?php echo translate('Masuk', 'Login'); ?>
+                                <?php echo e(translate('Masuk', 'Login')); ?>
                             </a>
                             <a href="/register"
                                 class="flex items-center gap-1.5 text-sm font-semibold border-2 border-teal-500 text-teal-600 px-4 py-1.5 rounded-full hover:bg-teal-500 hover:text-white transition-all register-pill">
                                 <i data-lucide="user" class="h-3.5 w-3.5"></i>
-                                <?php echo translate('Daftar', 'Register'); ?>
+                                <?php echo e(translate('Daftar', 'Register')); ?>
                             </a>
                         </div>
                     <?php endif; ?>
@@ -179,27 +179,27 @@ $navClasses = $isHome
             <a href="/"
                 class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-teal-50 hover:text-teal-600 transition-colors">
                 <i data-lucide="home"
-                    class="h-4 w-4 inline mr-2 text-teal-500"></i><?php echo translate('Beranda', 'Home'); ?>
+                    class="h-4 w-4 inline mr-2 text-teal-500"></i><?php echo e(translate('Beranda', 'Home')); ?>
             </a>
             <a href="/tours"
                 class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-teal-50 hover:text-teal-600 transition-colors">
                 <i data-lucide="route"
-                    class="h-4 w-4 inline mr-2 text-teal-500"></i><?php echo translate('Paket Wisata', 'Tours'); ?>
+                    class="h-4 w-4 inline mr-2 text-teal-500"></i><?php echo e(translate('Paket Wisata', 'Tours')); ?>
             </a>
             <a href="/destinations"
                 class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-teal-50 hover:text-teal-600 transition-colors">
                 <i data-lucide="map-pinned"
-                    class="h-4 w-4 inline mr-2 text-teal-500"></i><?php echo translate('Destinasi', 'Destinations'); ?>
+                    class="h-4 w-4 inline mr-2 text-teal-500"></i><?php echo e(translate('Destinasi', 'Destinations')); ?>
             </a>
             <?php if (!$authUser): ?>
                 <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 mt-2">
                     <a href="/login"
                         class="flex justify-center rounded-full border border-slate-300 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-all">
-                        <?php echo translate('Masuk', 'Login'); ?>
+                        <?php echo e(translate('Masuk', 'Login')); ?>
                     </a>
                     <a href="/register"
                         class="flex justify-center rounded-full bg-linear-to-r from-cyan-500 to-teal-500 py-2.5 text-sm font-bold text-white shadow-sm transition-all">
-                        <?php echo translate('Daftar', 'Register'); ?>
+                        <?php echo e(translate('Daftar', 'Register')); ?>
                     </a>
                 </div>
             <?php endif; ?>

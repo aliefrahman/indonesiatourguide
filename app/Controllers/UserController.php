@@ -196,13 +196,24 @@ class UserController {
         if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
             $tmp = $_FILES['avatar']['tmp_name'];
             $filename = basename($_FILES['avatar']['name']);
-            $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-            if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
-                $avatarName = 'avatar_' . $currUser->id . '_' . time() . '.' . $ext;
-                $uploadDir = __DIR__ . '/../../storage/uploads/';
-                if (move_uploaded_file($tmp, $uploadDir . $avatarName)) {
-                    $data['avatar'] = $avatarName;
+            $size = $_FILES['avatar']['size'];
+            $mime = mime_content_type($tmp);
+
+            $allowedMimes = ['image/jpeg', 'image/png', 'image/webp'];
+            $maxSize = 1 * 1024 * 1024; // 1 MB
+            
+            if (in_array($mime, $allowedMimes) && $size <= $maxSize) {
+                $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+                if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
+                    $avatarName = 'avatar_' . $currUser->id . '_' . time() . '.' . $ext;
+                    $uploadDir = __DIR__ . '/../../storage/uploads/';
+                    if (move_uploaded_file($tmp, $uploadDir . $avatarName)) {
+                        $data['avatar'] = $avatarName;
+                    }
                 }
+            } else {
+                flash('error', 'Format avatar tidak valid atau ukuran melebih 1MB.');
+                redirect('/profile/edit');
             }
         }
 
