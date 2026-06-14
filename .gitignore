@@ -1,0 +1,5 @@
+.env
+node_modules/
+storage/tour_guide_db.sqlite
+storage/sessions/*
+!storage/sessions/.gitkeep

@@ -1,0 +1,27 @@
+# # Mencegah daftar isi direktori ditampilkan (Directory Listing) untuk semua folder
+# Options -Indexes
+
+# # Mengaktifkan RewriteEngine
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+
+#     # Blokir akses langsung ke folder-folder inti dan sistem
+#     RewriteRule ^(app|config|resources|node_modules|scratch)/ - [F,L]
+    
+#     # Meneruskan lalu lintas utama ke folder public (jika Document Root tidak diatur ke public)
+#     RewriteRule ^$ index.php [L]
+#     RewriteCond %{REQUEST_FILENAME} !-f
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteRule ^(.*)$ $1 [L]
+# </IfModule>
+
+# # Blokir akses ke file rahasia dan konfigurasi (misal: .env)
+# <FilesMatch "^\.env|^\.gitignore|.*\.md$|.*\.json$">
+#     <IfModule mod_authz_core.c>
+#         Require all denied
+#     </IfModule>
+#     <IfModule !mod_authz_core.c>
+#         Order allow,deny
+#         Deny from all
+#     </IfModule>
+# </FilesMatch>

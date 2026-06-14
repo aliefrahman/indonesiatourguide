@@ -1,0 +1,444 @@
+/* ════════════════════════════════════════════════════════════════
+   INDOTOUR — Custom Design System (custom.css)
+   Loaded alongside Tailwind CSS. Outfit + Plus Jakarta Sans.
+════════════════════════════════════════════════════════════════ */
+
+/* ── Global body override to light theme ──────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Outfit', system-ui, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── Text Selection ───────────────────────────────────────────── */
+::selection { background: #0ea5e9; color: #fff; }
+
+/* ── Gradient text (IndonesiaTour logo, hero "Indonesia" word) ── */
+.text-gradient {
+  background: linear-gradient(90deg, #06b6d4 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Navbar scroll shadow ─────────────────────────────────────── */
+.navbar-scrolled {
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.09);
+}
+
+/* ── Hero Overlay gradient ────────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 15, 30, 0.48) 0%,
+    rgba(5, 15, 30, 0.68) 55%,
+    rgba(5, 15, 30, 0.90) 100%
+  );
+}
+
+/* ── Search bar field wrapper ─────────────────────────────────── */
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background: #f8fafc;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.search-field:focus-within {
+  border-color: #0ea5e9;
+  background: #ffffff;
+}
+
+/* ── Search text input ────────────────────────────────────────── */
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.875rem;
+  color: #1e293b;
+  width: 100%;
+  padding: 0.2rem 0;
+  font-family: inherit;
+  font-weight: 500;
+}
+.search-input::placeholder { color: #94a3b8; font-weight: 400; }
+
+/* ── Teal gradient button ─────────────────────────────────────── */
+.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0ea5e9, #0d9488);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 15px 0 rgba(14, 165, 233, 0.38);
+  transition: opacity 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-teal:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px 0 rgba(14, 165, 233, 0.48);
+}
+.btn-teal:active { transform: scale(0.97); }
+
+/* ── Outline teal button ──────────────────────────────────────── */
+.btn-outline-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #94a3b8;
+  border: 1.5px solid #334155;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.btn-outline-teal:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: #94a3b8;
+  color: #ffffff;
+}
+
+/* ── Stat card icon circle ────────────────────────────────────── */
+.stat-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(14, 165, 233, 0.1);
+  color: #0ea5e9;
+  margin: 0 auto 0.6rem;
+}
+
+/* ── Section heading helpers ──────────────────────────────────── */
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+.section-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.3rem;
+}
+
+/* ── Category Card ────────────────────────────────────────────── */
+.cat-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.1rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cat-card:hover {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+  transform: translateY(-2px);
+}
+.cat-card.active {
+  border-color: #0ea5e9;
+  background: #f0f9ff;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+}
+
+/* ── Light card (tour cards) ──────────────────────────────────── */
+.card-light {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+.card-light:hover {
+  box-shadow: 0 10px 32px -6px rgba(14, 165, 233, 0.18), 0 4px 12px -4px rgba(0,0,0,.08);
+  transform: translateY(-3px);
+}
+
+/* ── Tour card image zoom ─────────────────────────────────────── */
+.tour-card-img-wrap { overflow: hidden; position: relative; }
+.tour-card-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tour-card-img-wrap:hover .tour-card-img { transform: scale(1.07); }
+
+/* ── Badge helpers ────────────────────────────────────────────── */
+.badge-teal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(14, 165, 233, 0.1);
+  color: #0369a1;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.tag-on-tour { background: #0ea5e9; color: #fff; border-radius: 9999px; padding: 2px 9px; font-size: 0.65rem; font-weight: 700; }
+.tag-free { background: #10b981; color: #fff; border-radius: 9999px; padding: 2px 9px; font-size: 0.65rem; font-weight: 700; }
+.tag-sale { background: #f59e0b; color: #fff; border-radius: 9999px; padding: 2px 9px; font-size: 0.65rem; font-weight: 700; }
+
+/* ── Destination overlay card ─────────────────────────────────── */
+.dest-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  height: 16rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  text-decoration: none;
+}
+.dest-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+.dest-card:hover > img { transform: scale(1.07); }
+.dest-card .dest-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 15, 30, 0.88) 0%, rgba(5, 15, 30, 0.2) 55%, transparent 100%);
+  z-index: 1;
+}
+.dest-card .dest-content {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 1.1rem;
+}
+
+/* ── Footer link ──────────────────────────────────────────────── */
+.footer-link {
+  color: #94a3b8;
+  font-size: 0.8125rem;
+  transition: color 0.15s ease;
+  text-decoration: none;
+}
+.footer-link:hover { color: #22d3ee; }
+
+/* ── Aspect ratio utility (for tour card images) ──────────────── */
+.aspect-video { aspect-ratio: 16 / 10; }
+
+/* ── Auth form dark card ──────────────────────────────────────── */
+.auth-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px -4px rgba(0,0,0,.1);
+  padding: 2rem 1.75rem;
+}
+.auth-input {
+  display: block;
+  width: 100%;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  padding: 0.65rem 0.875rem 0.65rem 2.5rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  outline: none;
+}
+.auth-input:focus {
+  border-color: #0ea5e9;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(14,165,233,.12);
+}
+.auth-input::placeholder { color: #94a3b8; }
+
+/* ── B2B & Footer Dark Custom Classes ── */
+.bg-b2b-dark {
+  background-color: #0f1e2e !important;
+}
+.b2b-card {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.b2b-card:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.bg-footer-dark {
+  background-color: #0c1a27 !important;
+}
+.footer-social-icon {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #94a3b8 !important;
+  transition: all 0.2s ease;
+}
+.footer-social-icon:hover {
+  background-color: #06b6d4 !important;
+  color: #ffffff !important;
+  border-color: #06b6d4 !important;
+  transform: translateY(-2px);
+}
+
+/* ── Transparent Navigation Overrides ── */
+.nav-transparent-mode {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+/* Only target top-level desktop menu links and guest login link */
+.nav-transparent-mode .hidden.md\:flex a,
+.nav-transparent-mode .hidden.sm\:flex a:not(.register-pill):not(.lang-toggle-link) {
+  color: rgba(255, 255, 255, 0.85) !important;
+  background-color: transparent !important;
+}
+.nav-transparent-mode .hidden.md\:flex a:hover,
+.nav-transparent-mode .hidden.sm\:flex a:not(.register-pill):not(.lang-toggle-link):hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+.nav-transparent-mode .text-slate-900.logo-text-brand {
+  color: #ffffff !important;
+}
+.nav-transparent-mode .border-slate-200 {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+.nav-transparent-mode #mobile-menu-button {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+.nav-transparent-mode .register-pill {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #ffffff !important;
+}
+.nav-transparent-mode .register-pill:hover {
+  background-color: #ffffff !important;
+  color: #0ea5e9 !important;
+  border-color: #ffffff !important;
+}
+
+/* Language selector container on transparent navbar */
+.nav-transparent-mode .lang-toggle-container {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.nav-transparent-mode .lang-toggle-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.nav-transparent-mode .lang-toggle-link:hover {
+  color: #ffffff !important;
+}
+.nav-transparent-mode .lang-toggle-link.active-lang {
+  background-color: #ffffff !important;
+  color: #0d9488 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* User profile dropdown links fix (override transparent mode inheritances) */
+.nav-transparent-mode #user-dropdown {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+.nav-transparent-mode #user-dropdown a {
+  color: #334155 !important;
+  background-color: transparent !important;
+}
+.nav-transparent-mode #user-dropdown a:hover {
+  color: #0ea5e9 !important;
+  background-color: #f0f9ff !important;
+}
+.nav-transparent-mode #user-dropdown a.text-rose-500 {
+  color: #f43f5e !important;
+}
+.nav-transparent-mode #user-dropdown a.text-rose-500:hover {
+  background-color: #fff1f2 !important;
+  color: #e11d48 !important;
+}
+
+
+/* ── Search pill layout override ── */
+.search-pill-form {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  border-radius: 2rem !important;
+  padding: 1.5rem !important;
+  background-color: #ffffff !important;
+}
+@media (min-width: 768px) {
+  .search-pill-form {
+    flex-direction: row !important;
+    border-radius: 9999px !important;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem !important;
+  }
+}
+
+/* ── Category grid override ── */
+.category-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+}
+@media (min-width: 640px) {
+  .category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+@media (min-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ── Specific B2B section background override ── */
+#b2b-section > div {
+  background-color: #0f1e2e !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+#b2b-section .b2b-card {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+#b2b-section .b2b-card:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}

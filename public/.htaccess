@@ -1,0 +1,14 @@
+# File: public/.htaccess
+# Mencegah directory listing
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Jangan rewrite jika file atau folder asli ada
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Arahkan semua request ke index.php
+    RewriteRule ^(.*)$ index.php [L,QSA]
+</IfModule>
